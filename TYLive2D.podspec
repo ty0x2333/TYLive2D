@@ -30,7 +30,13 @@ TODO: Add long description of the pod here.
 
   s.ios.deployment_target = '7.0'
 
-  s.source_files = 'TYLive2D/Classes/**/*'
+  s.source_files = ['TYLive2D/Classes/**/*', 'TYLive2D/Live2D/include/**/*']
+
+  # s.vendored_libraries = 'TYLive2D/Live2D/lib/Release-iphoneos/libLive2D.a'
+  s.xcconfig = {
+    'LIBRARY_SEARCH_PATHS' => '${PODS_ROOT}/TYLive2D/Live2D/lib/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/libLive2D.a',
+    'GCC_PREPROCESSOR_DEFINITIONS' => 'L2D_TARGET_IPHONE'
+  }
 
   # s.resource_bundles = {
   #   'TYLive2D' => ['TYLive2D/Assets/*.png']
