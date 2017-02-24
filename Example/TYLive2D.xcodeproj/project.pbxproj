@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19C4E1EA1E602B0300E8D6A5 /* texture_00.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C4E1E61E602B0300E8D6A5 /* texture_00.png */; };
+		19C4E1EB1E602B0300E8D6A5 /* texture_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C4E1E71E602B0300E8D6A5 /* texture_01.png */; };
+		19C4E1EC1E602B0300E8D6A5 /* texture_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C4E1E81E602B0300E8D6A5 /* texture_02.png */; };
+		19C4E1ED1E602B0300E8D6A5 /* haru.moc in Resources */ = {isa = PBXBuildFile; fileRef = 19C4E1E91E602B0300E8D6A5 /* haru.moc */; };
 		39F8830C3EAFA7644E83137E /* libPods-TYLive2D_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE57A325BD4B235D3DC83D3B /* libPods-TYLive2D_Example.a */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
@@ -38,8 +42,12 @@
 
 /* Begin PBXFileReference section */
 		0BB39F0D39863626536C2A0E /* Pods-TYLive2D_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TYLive2D_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TYLive2D_Tests/Pods-TYLive2D_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		19C4E1E61E602B0300E8D6A5 /* texture_00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture_00.png; sourceTree = "<group>"; };
+		19C4E1E71E602B0300E8D6A5 /* texture_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture_01.png; sourceTree = "<group>"; };
+		19C4E1E81E602B0300E8D6A5 /* texture_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture_02.png; sourceTree = "<group>"; };
+		19C4E1E91E602B0300E8D6A5 /* haru.moc */ = {isa = PBXFileReference; lastKnownFileType = file; path = haru.moc; sourceTree = "<group>"; };
 		1E997082E50B41192605E4C8 /* Pods-TYLive2D_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TYLive2D_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-TYLive2D_Example/Pods-TYLive2D_Example.release.xcconfig"; sourceTree = "<group>"; };
-		26492AB49210176E788FAE58 /* TYLive2D.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = TYLive2D.podspec; path = ../TYLive2D.podspec; sourceTree = "<group>"; };
+		26492AB49210176E788FAE58 /* TYLive2D.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = TYLive2D.podspec; path = ../TYLive2D.podspec; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* TYLive2D_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TYLive2D_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -61,10 +69,10 @@
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		75AD43468A8B43DF67BC48C1 /* libPods-TYLive2D_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TYLive2D_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		83F67758818893EC3C4E0A0D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		83F67758818893EC3C4E0A0D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		990D5C0738D43707B8277419 /* Pods-TYLive2D_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TYLive2D_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TYLive2D_Example/Pods-TYLive2D_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		A02FCF420CD2032F3C5A7997 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		A02FCF420CD2032F3C5A7997 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		C16AD06867CE066AA41987DE /* Pods-TYLive2D_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TYLive2D_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TYLive2D_Tests/Pods-TYLive2D_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE57A325BD4B235D3DC83D3B /* libPods-TYLive2D_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TYLive2D_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -95,6 +103,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19C4E1E41E602B0300E8D6A5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				19C4E1E51E602B0300E8D6A5 /* haru.1024 */,
+				19C4E1E91E602B0300E8D6A5 /* haru.moc */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		19C4E1E51E602B0300E8D6A5 /* haru.1024 */ = {
+			isa = PBXGroup;
+			children = (
+				19C4E1E61E602B0300E8D6A5 /* texture_00.png */,
+				19C4E1E71E602B0300E8D6A5 /* texture_01.png */,
+				19C4E1E81E602B0300E8D6A5 /* texture_02.png */,
+			);
+			path = haru.1024;
+			sourceTree = "<group>";
+		};
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +166,7 @@
 				6003F5A6195388D20070C39A /* TYViewController.m */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
+				19C4E1E41E602B0300E8D6A5 /* Resources */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
 			name = "Example for TYLive2D";
@@ -280,8 +308,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
+				19C4E1EA1E602B0300E8D6A5 /* texture_00.png in Resources */,
+				19C4E1EC1E602B0300E8D6A5 /* texture_02.png in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				19C4E1ED1E602B0300E8D6A5 /* haru.moc in Resources */,
+				19C4E1EB1E602B0300E8D6A5 /* texture_01.png in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
