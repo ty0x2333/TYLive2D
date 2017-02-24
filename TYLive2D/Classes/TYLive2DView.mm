@@ -11,6 +11,7 @@
 #import <OpenGLES/EAGL.h>
 #import <OpenGLES/ES1/gl.h>
 #import <OpenGLES/ES1/glext.h>
+#import <GLKit/GLKit.h>
 #import "Live2D.h"
 #import "UtSystem.h"
 #import "Live2DModelIPhone.h"
@@ -59,8 +60,10 @@
     
     _live2DModel = live2d::Live2DModelIPhone::loadModel([_modelPath UTF8String]);
     
-    for (NSInteger i = 0; i < _textureNames.count; ++i) {
-        int textureNumber = [self loadTexture:_textureNames[i]];
+    for (NSInteger i = 0; i < _texturePaths.count; ++i) {
+        
+        GLKTextureInfo *textureInfo = [GLKTextureLoader textureWithContentsOfFile:_texturePaths[i] options:@{ GLKTextureLoaderApplyPremultiplication: @(YES), GLKTextureLoaderGenerateMipmaps: @(YES) } error:nil];
+        int textureNumber = textureInfo.name;
         _live2DModel->setTexture(i, textureNumber);
         [_textures addObject:@(textureNumber)];
     }
@@ -85,7 +88,7 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    [_context renderbufferStorage:GL_RENDERBUFFER_OES fromDrawable:(CAEAGLLayer*)self.layer];
+    [_context renderbufferStorage:GL_RENDERBUFFER_OES fromDrawable:(CAEAGLLayer *)self.layer];
     glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_WIDTH_OES, &_deviceWidth);
     glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_HEIGHT_OES, &_deviceHeight);
     
@@ -108,35 +111,6 @@
                                      target:self
                                    selector:@selector(drawView)
                                    userInfo:nil repeats:TRUE];
-}
-
-#pragma mark - Helper
-
-- (GLuint)loadTexture:(NSString *)fileName {
-    GLuint texture;
-    
-    UIImage *uiImage = [UIImage imageNamed:fileName];
-    CGImageRef image = uiImage.CGImage;
-    
-    size_t width = CGImageGetWidth(image);
-    size_t height = CGImageGetHeight(image);
-    
-    GLubyte *imageData = (GLubyte *)calloc(width * height * 4 , 1);
-    CGContextRef imageContext = CGBitmapContextCreate(imageData, width, height, 8, width * 4, CGImageGetColorSpace(image),
-                                                      kCGImageAlphaPremultipliedLast);
-    CGContextDrawImage(imageContext, CGRectMake(0, 0, (CGFloat)width, (CGFloat)height), image);
-    CGContextRelease(imageContext);
-    
-    glGenTextures(1, &texture);
-    glBindTexture(GL_TEXTURE_2D, texture);
-    glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
-    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData);
-    
-    free(imageData);
-    
-    return texture;
 }
 
 @end

@@ -11,7 +11,7 @@
 @interface TYLive2DView : UIView
 
 @property (nonatomic, copy) NSString *modelPath;
-@property (nonatomic, strong) NSArray<NSString *> *textureNames;
+@property (nonatomic, strong) NSArray<NSString *> *texturePaths;
 
 - (void)loadModel;
 
