@@ -7,10 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		19C4E1EA1E602B0300E8D6A5 /* texture_00.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C4E1E61E602B0300E8D6A5 /* texture_00.png */; };
-		19C4E1EB1E602B0300E8D6A5 /* texture_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C4E1E71E602B0300E8D6A5 /* texture_01.png */; };
-		19C4E1EC1E602B0300E8D6A5 /* texture_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C4E1E81E602B0300E8D6A5 /* texture_02.png */; };
-		19C4E1ED1E602B0300E8D6A5 /* haru.moc in Resources */ = {isa = PBXBuildFile; fileRef = 19C4E1E91E602B0300E8D6A5 /* haru.moc */; };
+		19C4E2201E604FFF00E8D6A5 /* back_class_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C4E2191E604FFF00E8D6A5 /* back_class_normal.png */; };
+		19C4E2211E604FFF00E8D6A5 /* Haru in Resources */ = {isa = PBXBuildFile; fileRef = 19C4E21A1E604FFF00E8D6A5 /* Haru */; };
+		19C4E2221E604FFF00E8D6A5 /* HaruFullPack in Resources */ = {isa = PBXBuildFile; fileRef = 19C4E21B1E604FFF00E8D6A5 /* HaruFullPack */; };
+		19C4E2231E604FFF00E8D6A5 /* Miku in Resources */ = {isa = PBXBuildFile; fileRef = 19C4E21C1E604FFF00E8D6A5 /* Miku */; };
+		19C4E2241E604FFF00E8D6A5 /* ShizukuFullPack in Resources */ = {isa = PBXBuildFile; fileRef = 19C4E21D1E604FFF00E8D6A5 /* ShizukuFullPack */; };
+		19C4E2251E604FFF00E8D6A5 /* WankoFullPack in Resources */ = {isa = PBXBuildFile; fileRef = 19C4E21E1E604FFF00E8D6A5 /* WankoFullPack */; };
+		19C4E2261E604FFF00E8D6A5 /* Wankoromochi in Resources */ = {isa = PBXBuildFile; fileRef = 19C4E21F1E604FFF00E8D6A5 /* Wankoromochi */; };
+		19C4E22C1E60661300E8D6A5 /* texture_00.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C4E2281E60661300E8D6A5 /* texture_00.png */; };
+		19C4E22D1E60661300E8D6A5 /* texture_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C4E2291E60661300E8D6A5 /* texture_01.png */; };
+		19C4E22E1E60661300E8D6A5 /* texture_02.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C4E22A1E60661300E8D6A5 /* texture_02.png */; };
+		19C4E22F1E60661300E8D6A5 /* haru.moc in Resources */ = {isa = PBXBuildFile; fileRef = 19C4E22B1E60661300E8D6A5 /* haru.moc */; };
 		39F8830C3EAFA7644E83137E /* libPods-TYLive2D_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE57A325BD4B235D3DC83D3B /* libPods-TYLive2D_Example.a */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
@@ -42,10 +49,18 @@
 
 /* Begin PBXFileReference section */
 		0BB39F0D39863626536C2A0E /* Pods-TYLive2D_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TYLive2D_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TYLive2D_Tests/Pods-TYLive2D_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		19C4E1E61E602B0300E8D6A5 /* texture_00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture_00.png; sourceTree = "<group>"; };
-		19C4E1E71E602B0300E8D6A5 /* texture_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture_01.png; sourceTree = "<group>"; };
-		19C4E1E81E602B0300E8D6A5 /* texture_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture_02.png; sourceTree = "<group>"; };
-		19C4E1E91E602B0300E8D6A5 /* haru.moc */ = {isa = PBXFileReference; lastKnownFileType = file; path = haru.moc; sourceTree = "<group>"; };
+		19C4E1F21E604A0900E8D6A5 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		19C4E2191E604FFF00E8D6A5 /* back_class_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_class_normal.png; sourceTree = "<group>"; };
+		19C4E21A1E604FFF00E8D6A5 /* Haru */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Haru; sourceTree = "<group>"; };
+		19C4E21B1E604FFF00E8D6A5 /* HaruFullPack */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HaruFullPack; sourceTree = "<group>"; };
+		19C4E21C1E604FFF00E8D6A5 /* Miku */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Miku; sourceTree = "<group>"; };
+		19C4E21D1E604FFF00E8D6A5 /* ShizukuFullPack */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ShizukuFullPack; sourceTree = "<group>"; };
+		19C4E21E1E604FFF00E8D6A5 /* WankoFullPack */ = {isa = PBXFileReference; lastKnownFileType = folder; path = WankoFullPack; sourceTree = "<group>"; };
+		19C4E21F1E604FFF00E8D6A5 /* Wankoromochi */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Wankoromochi; sourceTree = "<group>"; };
+		19C4E2281E60661300E8D6A5 /* texture_00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture_00.png; sourceTree = "<group>"; };
+		19C4E2291E60661300E8D6A5 /* texture_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture_01.png; sourceTree = "<group>"; };
+		19C4E22A1E60661300E8D6A5 /* texture_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture_02.png; sourceTree = "<group>"; };
+		19C4E22B1E60661300E8D6A5 /* haru.moc */ = {isa = PBXFileReference; lastKnownFileType = file; path = haru.moc; sourceTree = "<group>"; };
 		1E997082E50B41192605E4C8 /* Pods-TYLive2D_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TYLive2D_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-TYLive2D_Example/Pods-TYLive2D_Example.release.xcconfig"; sourceTree = "<group>"; };
 		26492AB49210176E788FAE58 /* TYLive2D.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = TYLive2D.podspec; path = ../TYLive2D.podspec; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* TYLive2D_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TYLive2D_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,7 +70,6 @@
 		6003F595195388D20070C39A /* TYLive2D-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TYLive2D-Info.plist"; sourceTree = "<group>"; };
 		6003F597195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6003F599195388D20070C39A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6003F59B195388D20070C39A /* TYLive2D-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TYLive2D-Prefix.pch"; sourceTree = "<group>"; };
 		6003F59C195388D20070C39A /* TYAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYAppDelegate.h; sourceTree = "<group>"; };
 		6003F59D195388D20070C39A /* TYAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYAppDelegate.m; sourceTree = "<group>"; };
 		6003F5A5195388D20070C39A /* TYViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYViewController.h; sourceTree = "<group>"; };
@@ -106,18 +120,25 @@
 		19C4E1E41E602B0300E8D6A5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				19C4E1E51E602B0300E8D6A5 /* haru.1024 */,
-				19C4E1E91E602B0300E8D6A5 /* haru.moc */,
+				19C4E2271E60661300E8D6A5 /* haru.1024 */,
+				19C4E22B1E60661300E8D6A5 /* haru.moc */,
+				19C4E2191E604FFF00E8D6A5 /* back_class_normal.png */,
+				19C4E21A1E604FFF00E8D6A5 /* Haru */,
+				19C4E21B1E604FFF00E8D6A5 /* HaruFullPack */,
+				19C4E21C1E604FFF00E8D6A5 /* Miku */,
+				19C4E21D1E604FFF00E8D6A5 /* ShizukuFullPack */,
+				19C4E21E1E604FFF00E8D6A5 /* WankoFullPack */,
+				19C4E21F1E604FFF00E8D6A5 /* Wankoromochi */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		19C4E1E51E602B0300E8D6A5 /* haru.1024 */ = {
+		19C4E2271E60661300E8D6A5 /* haru.1024 */ = {
 			isa = PBXGroup;
 			children = (
-				19C4E1E61E602B0300E8D6A5 /* texture_00.png */,
-				19C4E1E71E602B0300E8D6A5 /* texture_01.png */,
-				19C4E1E81E602B0300E8D6A5 /* texture_02.png */,
+				19C4E2281E60661300E8D6A5 /* texture_00.png */,
+				19C4E2291E60661300E8D6A5 /* texture_01.png */,
+				19C4E22A1E60661300E8D6A5 /* texture_02.png */,
 			);
 			path = haru.1024;
 			sourceTree = "<group>";
@@ -146,6 +167,7 @@
 		6003F58C195388D20070C39A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				19C4E1F21E604A0900E8D6A5 /* libstdc++.6.0.9.tbd */,
 				6003F58D195388D20070C39A /* Foundation.framework */,
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
@@ -179,7 +201,6 @@
 				6003F595195388D20070C39A /* TYLive2D-Info.plist */,
 				6003F596195388D20070C39A /* InfoPlist.strings */,
 				6003F599195388D20070C39A /* main.m */,
-				6003F59B195388D20070C39A /* TYLive2D-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -307,14 +328,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19C4E2221E604FFF00E8D6A5 /* HaruFullPack in Resources */,
+				19C4E2241E604FFF00E8D6A5 /* ShizukuFullPack in Resources */,
+				19C4E22D1E60661300E8D6A5 /* texture_01.png in Resources */,
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
-				19C4E1EA1E602B0300E8D6A5 /* texture_00.png in Resources */,
-				19C4E1EC1E602B0300E8D6A5 /* texture_02.png in Resources */,
+				19C4E2231E604FFF00E8D6A5 /* Miku in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
+				19C4E22C1E60661300E8D6A5 /* texture_00.png in Resources */,
+				19C4E2211E604FFF00E8D6A5 /* Haru in Resources */,
+				19C4E2201E604FFF00E8D6A5 /* back_class_normal.png in Resources */,
+				19C4E22E1E60661300E8D6A5 /* texture_02.png in Resources */,
+				19C4E2261E604FFF00E8D6A5 /* Wankoromochi in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
-				19C4E1ED1E602B0300E8D6A5 /* haru.moc in Resources */,
-				19C4E1EB1E602B0300E8D6A5 /* texture_01.png in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
+				19C4E22F1E60661300E8D6A5 /* haru.moc in Resources */,
+				19C4E2251E604FFF00E8D6A5 /* WankoFullPack in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,8 +584,6 @@
 			baseConfigurationReference = 990D5C0738D43707B8277419 /* Pods-TYLive2D_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TYLive2D/TYLive2D-Prefix.pch";
 				INFOPLIST_FILE = "TYLive2D/TYLive2D-Info.plist";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
@@ -571,8 +597,6 @@
 			baseConfigurationReference = 1E997082E50B41192605E4C8 /* Pods-TYLive2D_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TYLive2D/TYLive2D-Prefix.pch";
 				INFOPLIST_FILE = "TYLive2D/TYLive2D-Info.plist";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
