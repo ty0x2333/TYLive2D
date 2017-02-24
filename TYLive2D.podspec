@@ -33,16 +33,20 @@ TODO: Add long description of the pod here.
   s.source_files = ['TYLive2D/Classes/**/*', 'TYLive2D/Live2D/include/**/*']
 
   # s.vendored_libraries = 'TYLive2D/Live2D/lib/Release-iphoneos/libLive2D.a'
+  # s.vendored_libraries = 'TYLive2D/Live2D/lib/Release-iphonesimulator/libLive2D.a'
+  s.vendored_libraries = 'TYLive2D/Live2D/lib/Debug-iphonesimulator/libLive2D.a'
+  s.preserve_paths = 'TYLive2D/Live2D/lib/**/*'
   s.xcconfig = {
-    'LIBRARY_SEARCH_PATHS' => '${PODS_ROOT}/TYLive2D/Live2D/lib/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/libLive2D.a',
+    # 'LIBRARY_SEARCH_PATHS' => '${PODS_ROOT}/TYLive2D/Live2D/lib/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/libLive2D.a',
     'GCC_PREPROCESSOR_DEFINITIONS' => 'L2D_TARGET_IPHONE'
   }
+  s.libraries = 'stdc++'
 
   # s.resource_bundles = {
   #   'TYLive2D' => ['TYLive2D/Assets/*.png']
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
+  s.frameworks = 'GLKit', 'OpenGLES'
   # s.dependency 'AFNetworking', '~> 2.3'
 end
