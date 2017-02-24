@@ -1,0 +1,11 @@
+platform :ios,'7.0'
+
+target 'TYLive2D_Example' do
+  pod 'TYLive2D', :path => '../'
+
+  target 'TYLive2D_Tests' do
+    inherit! :search_paths
+
+    pod 'Kiwi'
+  end
+end

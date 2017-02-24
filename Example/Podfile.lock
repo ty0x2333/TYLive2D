@@ -1,0 +1,19 @@
+PODS:
+  - Kiwi (2.4.0)
+  - TYLive2D (0.1.0)
+
+DEPENDENCIES:
+  - Kiwi
+  - TYLive2D (from `../`)
+
+EXTERNAL SOURCES:
+  TYLive2D:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Kiwi: f49c9d54b28917df5928fe44968a39ed198cb8a8
+  TYLive2D: eb8e91e44371c72c70443300583304ce29bfdd1c
+
+PODFILE CHECKSUM: 37e18044275faacd0b2dcf86f2257efa1f2db510
+
+COCOAPODS: 1.2.0
