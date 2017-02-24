@@ -8,11 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class TYLive2DModel;
+
 @interface TYLive2DView : UIView
 
-@property (nonatomic, copy) NSString *modelPath;
-@property (nonatomic, strong) NSArray<NSString *> *texturePaths;
-
-- (void)loadModel;
+- (void)loadModel:(TYLive2DModel *)model;
 
 @end

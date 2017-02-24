@@ -15,6 +15,7 @@
 #import "Live2D.h"
 #import "UtSystem.h"
 #import "Live2DModelIPhone.h"
+#import "TYLive2DModel.h"
 
 @interface TYLive2DView ()
 
@@ -55,14 +56,14 @@
     return self;
 }
 
-- (void)loadModel {
+- (void)loadModel:(TYLive2DModel *)model {
     live2d::Live2D::init();
     
-    _live2DModel = live2d::Live2DModelIPhone::loadModel([_modelPath UTF8String]);
+    _live2DModel = live2d::Live2DModelIPhone::loadModel([model.modelPath UTF8String]);
     
-    for (NSInteger i = 0; i < _texturePaths.count; ++i) {
+    for (NSInteger i = 0; i < model.texturePaths.count; ++i) {
         
-        GLKTextureInfo *textureInfo = [GLKTextureLoader textureWithContentsOfFile:_texturePaths[i] options:@{ GLKTextureLoaderApplyPremultiplication: @(YES), GLKTextureLoaderGenerateMipmaps: @(YES) } error:nil];
+        GLKTextureInfo *textureInfo = [GLKTextureLoader textureWithContentsOfFile:model.texturePaths[i] options:@{ GLKTextureLoaderApplyPremultiplication: @(YES), GLKTextureLoaderGenerateMipmaps: @(YES) } error:nil];
         int textureNumber = textureInfo.name;
         _live2DModel->setTexture(i, textureNumber);
         [_textures addObject:@(textureNumber)];
