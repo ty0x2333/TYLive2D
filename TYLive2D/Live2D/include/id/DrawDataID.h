@@ -23,9 +23,9 @@ namespace live2d
 	
 	public:
 	
-		
-		
-		
+		// IDを取得する
+		// ・同一の値を持つ全てのIDが、同じポインタを指すことを保証する （同一の確認が　== 比較 で良い） \n
+		// ・Live2D::dispose()時に解放される
 		static DrawDataID * getID( const LDString & str ) ;
 
 		static DrawDataID * getID(  const RefString& refStr ) ;
@@ -34,7 +34,13 @@ namespace live2d
 	
 	
 	public:
-		
+		/****************************************************************************
+		@~english
+
+		@~japanese
+		@brief		IDをC言語の文字列として取得
+		@return		ID文字列
+		****************************************************************************/
 		const char * toChar(){ return id.c_str() ; }
 
 		

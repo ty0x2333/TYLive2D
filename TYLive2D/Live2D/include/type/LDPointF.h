@@ -26,8 +26,8 @@ namespace live2d
 		virtual ~LDPointF();
 		
 	public:
-		l2d_pointf x;		
-		l2d_pointf y;		
+		l2d_pointf x;		// X
+		l2d_pointf y;		// Y
 	};
 
 } //------------------------- LIVE2D NAMESPACE ------------

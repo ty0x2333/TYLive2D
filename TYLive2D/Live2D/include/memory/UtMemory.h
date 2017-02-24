@@ -14,7 +14,7 @@
 #include "../Live2D.h"
 #include "LDAllocator.h"
 
-
+// メモリをアライメントする
 #define		L2D_ALLIGN(p , align)				((char *)(((unsigned int)(p) + (align)-1) & ~((align)-1)))
 #define		L2D_PTR_TO_ALLOC_HEADER( ptr )		((AllocHeader*)((char*)ptr - sizeof(AllocHeader)))
 
@@ -81,7 +81,7 @@ namespace live2d
 {
 
 	
-	class LDAllocator;	
+	class LDAllocator;    // LDAllocatorクラスの宣言
 	class MemoryParam ;
 	class MemoryInfoSet ;
 	class AMemoryHolder ;
@@ -138,16 +138,16 @@ namespace live2d
 		static MemoryInfoSet* getMemoryInfoAllocator(){ return memoryInfoAllocator ; }
 	#endif
 		
-		
+		// ポインタをalignでアライメントする。signatureSizeバイト分をポインタの前に挟む。戻り値はsignatureの前に
 		static char* alignPtr( char* ptr , int align , int signatureSize )
 		{
 			return (char *)(((l2d_size_t)ptr + signatureSize + align-1) & ~(align-1)) - signatureSize ;
 		}
 	
-		
+		// Live2D::dispose() まで生存し続けるメモリグループを取得する
 		static MemoryParam*  getStaticMemoryParam(){ return staticMemoryParam ; }
 	
-		
+		// テンポラリに使用するメモリグループを取得する
 		static MemoryParam*  getTmpMemoryParam(){ return tmpMemoryParam ; }
 	
 		static void staticInit_notForClientCall(LDAllocator*  allocator) ;//1.0beta3
@@ -156,7 +156,7 @@ namespace live2d
 	
 	private:
 		
-		UtMemory();
+		UtMemory();// インスタンス化させない
 		
 		//Prevention of copy Constructor
 		UtMemory( const UtMemory & ) ;
@@ -167,8 +167,8 @@ namespace live2d
 		static const char*		lastFileName ;
 		static int				lastLine ;
 	
-		static MemoryParam*			staticMemoryParam ;
-		static MemoryParam*			tmpMemoryParam ;
+		static MemoryParam*			staticMemoryParam ;// Live2D::init()からLive2D::dispose()まで生存
+		static MemoryParam*			tmpMemoryParam ;// 自由に確保・開放出来るメモリ（通常のメモリと同じように使える）
 	
 		static AMemoryHolder*		staticMemoryHolder ;
 		static MemoryHolderSocket*	tmpMemoryHolder	;
@@ -176,7 +176,7 @@ namespace live2d
 	
 	
 	#ifdef L2D_DEBUG
-		static bool					useMemoryInfo ;			
+		static bool					useMemoryInfo ;			// 使用中メモリのログを取る場合にtrue 
 	
 		static MemoryInfoSet*		memoryInfoLocal	;
 		static MemoryInfoSet*		memoryInfoAllocator ;

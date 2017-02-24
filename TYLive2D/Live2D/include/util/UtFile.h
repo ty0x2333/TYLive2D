@@ -19,15 +19,15 @@ namespace live2d
 	class UtFile 
 	{
 	public:
-		
-		
+		// ファイルからバイナリデータをロードして返す。失敗した場合は NULL が返る。
+		// 必ず UtFile::releaseLoadBuffer() で破棄する。
 		static char* loadFile( const live2d::LDString &filepath , int * ret_bufsize ) ;
 
-		
-		
+		// ファイルからバイナリデータをロードして返す。失敗した場合は NULL が返る。
+		// 必ず UtFile::releaseLoadBuffer() で破棄する。
 		static char* loadFile( const char * filepath , int * ret_bufsize ) ;
 	
-		
+		// loadFile()でロードしたバッファを破棄する
 		static void releaseLoadBuffer( char * buf ) ;
 		
 	private:

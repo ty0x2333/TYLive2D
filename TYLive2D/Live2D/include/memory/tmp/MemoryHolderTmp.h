@@ -1,4 +1,13 @@
-
+/**
+ *  MemoryHolderTmp.h
+ *
+ *  一時インスタンス用のメモリ保持用クラス
+ * 
+ *  通常の確保・破棄を行うメモリ実装
+ * 
+ *  Copyright(c) Live2D Inc. All rights reserved.
+ *  [[ CONFIDENTIAL ]]
+ */
 #pragma once
 
 
@@ -19,16 +28,16 @@ namespace live2d
 	class MHPageHeaderTmp ;
 
 	//==========================================================
-	
-	
+	// 　テンポラリ型のメモリホルダ
+	// 　通常のメモリ管理方式（自由にmalloc/free可能）
 	//==========================================================
 	class MemoryHolderTmp : public LDUnmanagedObject
 	//class MemoryHolderTmp : public AMemoryHolder
 	{
 	public:
-		const static l2d_size_t		LARGE_0					= 0 ;	
+		const static l2d_size_t		LARGE_0					= 0 ;	// 自由なサイズの時に、chunkSize 、pageSizeに設定される
 		const static l2d_size_t		PAGE_ALIGN				= 32 ;	//
-		const static int		BIN_COUNT				= 6 ;	
+		const static int		BIN_COUNT				= 6 ;	// BINの数
 		const static l2d_size_t		CHUNK_SIZE[ BIN_COUNT ] ;
 
 		//------------
@@ -43,8 +52,8 @@ namespace live2d
 	private:
 		MHPageHeaderTmp*	createNewPage( MHBin* bin , l2d_size_t chunkSize ) ;
 
-		
-		
+		// ターゲットpageの前のpageを取得する。見つかった場合は *ret_found == true 
+		// 戻り値は前のページ、*ret_found == true で戻り値がNULLの場合は first （bin->curPages等）と一致
 		MHPageHeaderTmp*  getPrevPage( MHPageHeaderTmp*  first , MHPageHeaderTmp* targetPage , bool* ret_found ) ;
 
 		void dumpPages_exe( MHPageHeaderTmp* p , MHBin* bin ) ;
@@ -57,8 +66,8 @@ namespace live2d
 
 	private:
 		LDAllocator::Type		allocType ;
-		const char*				holderName ;	
-		int						holderNo ;		
+		const char*				holderName ;	// MemoryHolderの識別名
+		int						holderNo ;		// MemoryHolderの何番目のインスタンスか
 
 		MHBin					bins[BIN_COUNT] ;
 	};

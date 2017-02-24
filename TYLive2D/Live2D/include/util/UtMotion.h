@@ -18,7 +18,7 @@ namespace live2d
 	class UtMotion 
 	{
 	public:
-		
+		// シンプルなイージングを掛けた値を返す(スロースタート/スローストップ)
 		static float getEasingSine(float value) ;
 		
 	private:

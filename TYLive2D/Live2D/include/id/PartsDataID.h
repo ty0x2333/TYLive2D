@@ -21,18 +21,24 @@ namespace live2d
 		const static int L2D_PARTS_ID_INITIAL_CAPACITY = 64 ;
 		
 	public:
-		
-		
-		
+		// IDを取得する 
+		// ・同一の値を持つ全てのIDが、同じポインタを指すことを保証する （同一の確認が　== 比較 で良い） \n
+		// ・Live2D::dispose()時に解放される
 		static PartsDataID * getID(const live2d::LDString &str ) ;
 
 		static PartsDataID * getID(  const RefString& refStr ) ;
 	
-		
+		// リリース用メソッド（Live2D::diposeから呼ばれる)
 		static void releaseStored_notForClientCall() ;
 	
 	public:
-		
+		/****************************************************************************
+		@~english
+
+		@~japanese
+		@brief		IDをC言語の文字列として取得
+		@return		ID文字列
+		****************************************************************************/
 		const char * toChar(){ return id.c_str() ; }
 	
 	private:	
@@ -55,7 +61,7 @@ namespace live2d
 		
 	private:	
 		//------------ this ------------
-		live2d::LDString 					id ;
+		live2d::LDString 					id ;// 生成時に複製されているため、Destructorで開放する
 	};
 }
 //------------ LIVE2D NAMESPACE ------------

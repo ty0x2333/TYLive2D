@@ -1,4 +1,12 @@
-
+/*
+ *  RefString.h
+ *
+ *  ロード中に使用する文字列参照
+ *  破棄してはならない
+ *
+ *  Copyright(c) Live2D Inc. All rights reserved.
+ *  [[ CONFIDENTIAL ]]
+ */
  
 #ifndef __LIVE2D_REF_STRING__
 #define __LIVE2D_REF_STRING__
@@ -29,7 +37,7 @@ namespace live2d
 		}
 
 	public:
-		const char*		ptr_not_zero_end ;
+		const char*		ptr_not_zero_end ;// 終端が\0とは限らない
 		int				length ;
 	};
 

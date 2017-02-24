@@ -45,16 +45,16 @@ namespace live2d
 		}
 
 	public:
-		float 	mass ;					
+		float 	mass ;					// 質量(kg)
 		
-		float 	x  , y ;				
-		float 	vx ,vy ;				
-		float 	ax ,ay ;				
+		float 	x  , y ;				// 位置(m)
+		float 	vx ,vy ;				// 速度(m/s)
+		float 	ax ,ay ;				// 加速度(m/s2)
 			
-		float 	fx ,fy ;				
+		float 	fx ,fy ;				// 外力
 
-		float 	last_x , last_y ;		
-		float 	last_vx , last_vy ;		
+		float 	last_x , last_y ;		// 
+		float 	last_vx , last_vy ;		// 
 		
 	} ;
 
@@ -75,8 +75,8 @@ namespace live2d
 
 		typedef enum 
 		{
-			TARGET_FROM_ANGLE = 0 ,
-			TARGET_FROM_ANGLE_V  
+			TARGET_FROM_ANGLE = 0 ,// 髪の毛モデルのゆれの角度
+			TARGET_FROM_ANGLE_V  // 髪の毛モデルのゆれの角速度（髪揺れの変形方向は速度方向に依存する）
 		} Target ;
 
 	public:
@@ -88,46 +88,46 @@ namespace live2d
 		virtual ~PhysicsHair();
 
 	public:
-		
-		
-		
-		
+		//  セットアップ
+		//  baseLengthM 		髪の毛の長さ（メートル）
+		//  airRegistance 	空気抵抗（デフォルト値 0.5）
+		//  mass				髪の毛の質量（Kg）
 		void setup(float baseLengthM , float airRegistance, float mass ) ;
 
-		
+		// 外部から点の位置初期化などを行った場合に呼ぶ
 		void setup() ;
 
 
-		
+		// 髪の毛の基準点の X に紐づける値
 		void addSrcParam( PhysicsHair::Src srcType , const char * paramID , float scale , float weight ) ;
 
-		
+		// 髪の毛の基準点の X に紐づける値
 		void addTargetParam( PhysicsHair::Target targetType , const char * paramID , float scale , float weight ) ;
 		
-		
+		//  更新
 		void update(live2d::ALive2DModel * model , long long time);
 
-		
+		//  髪の根元の質点取得
 		PhysicsPoint & getPhysicsPoint1(){ return p1 ; }
 
-		
+		//  髪の先端の質点取得
 		PhysicsPoint & getPhysicsPoint2(){ return p2 ; }
 
-		
+		//  重力角度取得
 		float getGravityAngleDeg(){ return this->gravityAngleDeg ; }
 
-		
+		//  重力角度セット
 		void setGravityAngleDeg(float angleDeg){ this->gravityAngleDeg = angleDeg ; }
 		
-		
+		//  角速度の取得
 		float getAngleP1toP2Deg(){ return angleP1toP2Deg ; }
 
-		
+		//  各速度の計算結果取得
 		float getAngleP1toP2Deg_velocity(){ return angleP1toP2Deg_v ; }
 		
 
 	private:
-		
+		//  更新
 		void update_exe(live2d::ALive2DModel *& model, float dt);
 
 		inline float calc_angleP1toP2()
@@ -136,27 +136,27 @@ namespace live2d
 		}
 
 	private:
-		PhysicsPoint 						p1 ;							
-		PhysicsPoint 						p2 ;							
+		PhysicsPoint 						p1 ;							// 質点１（髪の根元）
+		PhysicsPoint 						p2 ;							// 質点２（髪の先端）
 
-		float		 						baseLengthM;					
-		float 								gravityAngleDeg;				
-		float 								airResistance;					
+		float		 						baseLengthM;					// 
+		float 								gravityAngleDeg;				// 
+		float 								airResistance;					// 
 
-		float 								angleP1toP2Deg ;				
+		float 								angleP1toP2Deg ;				// 計算結果
 		float 								last_angleP1toP2Deg ;
 
-		float 								angleP1toP2Deg_v ;				
+		float 								angleP1toP2Deg_v ;				// 各速度の計算結果
 
-		
-		long long 							startTime;						
-		long long 							lastTime;						
+		// 時刻情報
+		long long 							startTime;						// 
+		long long 							lastTime;						// 
 
-		
-		live2d::LDVector<IPhysicsSrc*>* 	srcListPtr ;					
+	    
+		live2d::LDVector<IPhysicsSrc*>* 	srcListPtr ;					// 物理演算に関係づける元のパラメータ値
 
 	   
-		live2d::LDVector<IPhysicsTarget*>*	targetListPtr ;				 	
+		live2d::LDVector<IPhysicsTarget*>*	targetListPtr ;				 	// 物理演算結果を対応づけるパラメータ値
 
 		live2d::MemoryParam*  				memoryManagement ;
 		live2d::AMemoryHolder*				memoryHolderFixedMain ;

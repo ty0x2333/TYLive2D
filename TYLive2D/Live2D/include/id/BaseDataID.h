@@ -1,4 +1,11 @@
-
+/*
+ * BaseDataID.h
+ *
+ *　オーバーライドしないこと
+ * 
+ *  Copyright(c) Live2D Inc. All rights reserved.
+ *  [[ CONFIDENTIAL ]]
+ */
 #ifndef __LIVE2D_BASE_DATA_ID_H__
 #define __LIVE2D_BASE_DATA_ID_H__
 
@@ -18,9 +25,9 @@ namespace live2d
 	
 	public:
 	
-		
-		
-		
+		// IDを取得する
+		// ・同一の値を持つ全てのIDが、同じポインタを指すことを保証する （同一の確認が　== 比較 で良い） \n
+		// ・Live2D::dispose()時に解放される
 		static BaseDataID * getID(const live2d::LDString &str ) ;
 	
 		static BaseDataID * getID(  const RefString& refStr ) ;
@@ -35,7 +42,7 @@ namespace live2d
 		}
 	
 		
-		
+		// リリース用メソッド（Live2D::diposeから呼ばれる)
 		static void releaseStored_notForClientCall() ;
 	
 	public:
@@ -60,7 +67,7 @@ namespace live2d
 		static BaseDataID * 				dstBaseId ;
 		
 	private:
-		live2d::LDString 					id ;				
+		live2d::LDString 					id ;				// 生成時に複製されているため、Destructorで開放する
 	};
 	
 }

@@ -32,7 +32,7 @@ namespace live2d
 		virtual void readV2(BReader & br , MemoryParam* memParam ) ;
 	
 	private:
-		LDVector<ParamDefFloat*>*	paramDefList ;		
+		LDVector<ParamDefFloat*>*	paramDefList ;		// パラメータ定義リスト
 	
 	};
 }

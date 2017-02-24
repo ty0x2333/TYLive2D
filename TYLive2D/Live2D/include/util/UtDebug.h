@@ -13,7 +13,7 @@
 #include "../memory/LDObject.h"
 
 #ifndef NULL
-#  define NULL	0
+#  define NULL    0
 #endif
 
 
@@ -24,7 +24,7 @@
 #ifdef L2D_DEBUG
 
 	#define L2D_ASSERT(expr)if( expr ) { } else { live2d::UtDebug::error("assert ::%s %d \n" , __FILE__ , __LINE__ ) ; live2d::UtDebug::debugBreak(); }
-//	#define L2D_ASSERT_S(expr,msg)if( expr ) { } else { live2d::UtDebug::error("assert :: %s\n		@%s : %d" , msg , __FILE__ , __LINE__ ) ; live2d::UtDebug::debugBreak();}
+//	#define L2D_ASSERT_S(expr,msg)if( expr ) { } else { live2d::UtDebug::error("assert :: %s\n        @%s : %d" , msg , __FILE__ , __LINE__ ) ; live2d::UtDebug::debugBreak();}
 	#define L2D_ASSERT_S(expr,format, ... )if( expr ) { } else { live2d::UtDebug::assertF( __FILE__ , __LINE__ , format ,  __VA_ARGS__  ) ; live2d::UtDebug::debugBreak(); }
 
 	#define L2D_DEBUG_MESSAGE( format , ... ) live2d::UtDebug::error( format , __VA_ARGS__ ) 
@@ -80,7 +80,7 @@ namespace live2d
 		const static unsigned int MEMORY_DEBUG_MEMORY_INFO_DUMP				= 0x20  ;
 		const static unsigned int MEMORY_DEBUG_MEMORY_INFO_ALL				= MEMORY_DEBUG_MEMORY_INFO_COUNT | MEMORY_DEBUG_MEMORY_INFO_DUMP  ;
 	
-		const static unsigned int MEMORY_DEBUG_MEMORY_INFO_KEEP_FREE		= 0x40  ;
+		const static unsigned int MEMORY_DEBUG_MEMORY_INFO_KEEP_FREE		= 0x40  ;// 通常はOFF（メモリが永遠に増えていく）
 	
 		const static unsigned int MEMORY_DEBUG_MEMORY_DUMP_PLACEMENT_NEW	= 0x80  ;
 		
@@ -112,9 +112,9 @@ namespace live2d
 		
 		static void debugBreak() ;
 		
-		
-		
-		
+		// メモリ周りの情報をダンプする場合にMEM_DUMP_で始まるフラグを設定する
+		// デバッグモード（ダンプは_DEBUGが定義されている場合のみ有効）
+		// 	UtDebug::MEM_DUMP_ALLなど
 		static void  setMemoryDebugFlags( unsigned int flag ){ memoryDebugFlags = flag ; }
 
 		static void  addMemoryDebugFlags( unsigned int flag ){ memoryDebugFlags |= flag ; }
@@ -136,7 +136,7 @@ namespace live2d
 		static long long dump( const char * key , bool print_string=true) ;
 	#endif
 	
-		
+		// リリース用メソッド（Live2D::diposeから呼ばれる)
 		static void staticRelease_notForClientCall() ;
 	
 	private:

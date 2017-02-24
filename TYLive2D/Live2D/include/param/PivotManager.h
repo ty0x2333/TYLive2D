@@ -32,25 +32,25 @@ namespace live2d
 	public:
 		virtual void readV2(BReader & br , MemoryParam* memParam ) ;
 		void initDirect(MemoryParam*	memParam) ;
-		int calcPivotValue(ModelContext & mdc , bool *ret_paramOutside );
-		void calcPivotIndexies( unsigned short* array64 , float * tmpT_array  , int interpolateCount);
-		bool checkParamUpdated( ModelContext & mdc ) const ;
+	    int calcPivotValue(ModelContext & mdc , bool *ret_paramOutside );
+	    void calcPivotIndexies( unsigned short* array64 , float * tmpT_array  , int interpolateCount);
+	    bool checkParamUpdated( ModelContext & mdc ) const ;
 	
 	public:
 		
-		int getParamCount() const { return (int)paramPivotTable->size() ; } 
+	    int getParamCount() const { return (int)paramPivotTable->size() ; } 
 		
 		
-		LDVector<ParamPivots*>* getParamPivotTableRef() const { return paramPivotTable ; }
+	    LDVector<ParamPivots*>* getParamPivotTableRef() const { return paramPivotTable ; }
 	
 	
 	
-
+// ---------------------------------サンプル用-------------------------------------
 #if L2D_SAMPLE
 		void DUMP_PIVOT_STR( int pivotArrayNo );
 #endif
 //--------------------------------------------------------------------------------
-		
+	    
 	private: 
 		//Prevention of copy Constructor 
 		PivotManager( const PivotManager & ) ;				
@@ -58,7 +58,7 @@ namespace live2d
 	
 		
 	private:  
-		LDVector<ParamPivots*>*		paramPivotTable;		
+	    LDVector<ParamPivots*>*		paramPivotTable;		// パラメータ(paramID)ごとのピボットを設定する
 	
 	};
 }

@@ -35,7 +35,7 @@ namespace live2d
 		
 	public:
 		// Initialize
-		void initDirect(MemoryParam* memParam) ;
+		void initDirect(MemoryParam* memParam) ;// シリアライズせずにメモリを確保する場合はこちらを呼び出す
 		PartsDataContext* init(ModelContext &mdc) ;
 		
 	
@@ -80,9 +80,9 @@ namespace live2d
 		void setPartsID(PartsDataID *id){ partsID = id ; }
 		
 		
-		void addBaseData( IBaseData * baseData ) ;
+		void addBaseData( IBaseData * baseData ) ;// baseDataのポインタは、PartsDataが破棄する!
 
-		void addDrawData( IDrawData * drawData ) ;
+		void addDrawData( IDrawData * drawData ) ;// drawDataのポインタは、PartsDataが破棄する!
 		
 		
 		virtual void readV2(BReader & br , MemoryParam* memParam ) ;
@@ -102,10 +102,10 @@ namespace live2d
 	private:
 		bool					visible ;			// = true ;
 		bool					locked  ;			// = false ;
-		PartsDataID *			partsID ;			
+		PartsDataID *			partsID ;			// shared(L2D_DELETE不要)
 		
-		LDVector<IBaseData*>*	baseDataList ;		
-		LDVector<IDrawData*>*	drawDataList ;		
+		LDVector<IBaseData*>*	baseDataList ;		// ベースデータリスト
+		LDVector<IDrawData*>*	drawDataList ;		// 描画データリスト
 	//	MemoryParam*			memParam ;
 	};
 	
@@ -127,7 +127,7 @@ namespace live2d
 		void setPartsOpacity(float v){ partsOpacity = v ; }
 	
 	private:
-		float 			partsOpacity ;		
+		float 			partsOpacity ;		// パーツの不透明度を格納用
 		PartsData * 	srcPtr ;			//
 	} ;
 } 

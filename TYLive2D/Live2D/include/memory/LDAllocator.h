@@ -1,4 +1,16 @@
-
+/*
+ *  LDAllocator.h
+ *
+ *  Live2Dで使用するメモリを確保・破棄するためのクラス
+ *
+ *  カスタマイズしたい場合は、サブクラスを作り、malloc, freeをオーバーライドし、
+ *  Live2Dの初期化時に登録する
+ *
+ *  Live2D::init( live2d::LDAllocator*  allocator ) ;
+ *
+ *  Copyright(c) Live2D Inc. All rights reserved.
+ *  [[ CONFIDENTIAL ]]
+ */
 
 #ifndef __LIVE2D_LDALLOCATOR_H__
 #define __LIVE2D_LDALLOCATOR_H__
@@ -10,7 +22,7 @@ namespace live2d {
 
 
 	
-	class LDAllocator 
+	class LDAllocator // LDObjectを継承しない
 	{
 	public:
 		typedef enum {

@@ -21,11 +21,11 @@
 
 
 #ifndef NULL
-#  define NULL	0
+#  define NULL    0
 #endif
 
 
-
+// l2d_vector : 旧版との互換性維持のための宣言。今後使用中止予定
 #define l2d_vector			live2d::LDVector
 
 
@@ -79,34 +79,34 @@ namespace live2d
 			if( index < 0 || _size <= index ){	printf("out of bounds error3@LDVector\n") ;	}
 #endif	
 			return _ptr[index] ;  
-		}
+		}// 仮実装
 		
 		//-- else --
-		
+		// push_back。ポインタ、数値型などのConstructor・Destructorを呼び出す必要がない場合は fakseに設定
 		void push_back( const T& value , bool callPlacementNew = true ) ;
 		void clear() ;
 	
 		unsigned int size(){	return _size ; }
 	
 		//-----------------------------------------
-		
-		
-		
+		// vector#resize()に相当する処理
+		// プリミティブ、ポインタ型などの時には、updateSize(size,value, false)
+		// で呼び出すと多少パフォーマンスが改善する場合がある。
 		void resize( int size , T value = T() )
 		{
 			updateSize( size , value , true ) ;	
 		}
 	
 		//-----------------------------------------
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		// updateSize()   
+		// 	vector#resize()に相当するサイズ変更
+		// 					
+		// 	param size					新しいサイズ
+		// 	param value					リサイズ時に埋める値
+		// 	param callPlacementNew		最適化のヒント（通常 trueで良いが、ポインタまたはプリミティブ型の時 
+		// 								false にすると配置newを回避して処理が軽減する可能性がある）
+		// 								resize時に値を単純に代入する場合は false (プリミティブ、ポインタ）
+		// 								resize時に配置newを呼び出す場合はtrue（クラスインスタンス）
 		//-----------------------------------------
 		void updateSize( int size , T value = T() , bool callPlacementNew = true ) ;
 	
@@ -119,10 +119,10 @@ namespace live2d
 	
 		bool remove( int index )
 		{
-			if( index < 0 || _size <= index ) return false ;
+			if( index < 0 || _size <= index ) return false ;// 削除範囲外
 			_ptr[index].~T() ;
 	
-			
+			// 削除(メモリをシフトする)、最後の一つを削除する場合はmove不要
 			if( index < _size-1 ) memmove( &(_ptr[index]) , &(_ptr[index+1]) , sizeof(T)*(_size-index-1) ) ;
 			--_size ;
 			return true ;
@@ -131,7 +131,7 @@ namespace live2d
 		
 		class iterator 
 		{
-			
+			//  +++++++++++++++++++++++フレンド+++++++++++++++++++++++++++++++++++++
 			friend class LDVector ;
 		public:
 			iterator() : _index(0) , _vector(NULL){}
@@ -139,7 +139,7 @@ namespace live2d
 			iterator(LDVector<T> *v, int idx) :  _index(idx) , _vector(v){}
 	
 		public:
-			
+			//  =演算子のオーバーロード
 			iterator& operator=( const iterator & ite )
 			{
 	
@@ -149,7 +149,7 @@ namespace live2d
 				return *this ;
 			}
 
-			
+			//  前置++演算子のオーバーロード
 			iterator& operator++()
 			{
 	
@@ -158,34 +158,34 @@ namespace live2d
 				this->_index ++ ;
 				return *this ;
 			}
-			
+			//  前置--演算子のオーバーロード
 			iterator& operator--()
 			{
 				this->_index -- ;
 				return *this ;
 			}
 
-			
+			//  後置++演算子のオーバーロード(intは後置用のダミー引数)
 			iterator operator++(int)
 			{
-				iterator iteold( this->_vector , this->_index++ ) ;
-				return iteold ;
+			    iterator iteold( this->_vector , this->_index++ ) ;// 古い値を保存
+				return iteold ;// 古い値を返す
 			}
 
-			
+			//  後置--演算子のオーバーロード(intは後置用のダミー引数)
 			iterator operator--(int)
 			{
-				iterator iteold( this->_vector , this->_index-- ) ;
+			    iterator iteold( this->_vector , this->_index-- ) ;// 古い値を保存
 				return iteold ;
 			}
 
-			
+			//  *演算子のオーバーロード
 			T& operator*()const
 			{
 				return this->_vector->_ptr[this->_index] ;
 			}
 
-			
+			//  !=演算子のオーバーロード
 			bool operator!=( const iterator & ite )const
 			{	
 				return (this->_index != ite._index) || (this->_vector != ite._vector) ;
@@ -199,7 +199,7 @@ namespace live2d
 		
 		class const_iterator 
 		{
-			
+			// ++++++++++++++++++++++++++++フレンド++++++++++++++++++++++++++++++++
 			friend class LDVector ;
 	
 		public:
@@ -210,47 +210,47 @@ namespace live2d
 	
 	
 		public:
-			
+			//  =演算子のオーバーロード
 			const_iterator& operator=( const const_iterator & ite )
 			{
 				this->_index = ite._index ;
 				this->_vector = ite._vector ;
 				return *this ;
 			}
-			
+			//  前置演算子(++)のオーバーロード
 			const_iterator& operator++()
 			{
 				this->_index ++ ;
 				return *this ;
 			}
-			
+			//  前置演算子(--)のオーバーロード
 			const_iterator& operator--()
 			{
 				this->_index -- ;
 				return *this ;
 			}
 
-			
+			//  後置演算子(++)のオーバーロード(intは後置のためのダミー引数)
 			const_iterator operator++(int)
 			{
-				const_iterator iteold( this->_vector , this->_index++ ) ;
-				return iteold ;
+			    const_iterator iteold( this->_vector , this->_index++ ) ;// 古い値を保存
+				return iteold ;// 古い値を返す
 			}
 
-			
+			//  後置演算子(--)のオーバーロード(intは後置のためのダミー引数)
 			const_iterator operator--(int)
 			{
-				const_iterator iteold( this->_vector , this->_index-- ) ;
+			    const_iterator iteold( this->_vector , this->_index-- ) ;// 古い値を保存
 				return iteold ;
 			}
 
-			
+			//  *演算子のオーバーロード
 			T& operator*()const
 			{
 				return this->_vector->_ptr[this->_index] ;
 			}
 
-			
+			//  !=演算子のオーバーロード
 			bool operator!=( const const_iterator & ite )const
 			{
 				return (this->_index != ite._index) || (this->_vector != ite._vector) ;
@@ -263,63 +263,63 @@ namespace live2d
 	
 		//--------- iterator method ---------
 
-		
+		//  開始 
 		const iterator begin()
 		{
 			iterator ite(this , 0) ;
 			return ite ;
 		}
 	
-		
+		//  終了
 		const iterator end()
 		{
-			iterator ite(this , _size) ;
+			iterator ite(this , _size) ;// 終了
 	
 	
 			return ite ;
 		}
 	
-		
+		//  開始
 		const const_iterator begin() const 
 		{
 			const_iterator ite(this , 0) ;
 			return ite ;
 		}
 	
-		
+		//  終了
 		const const_iterator end() const 
 		{
-			const_iterator ite(this , _size) ;
+			const_iterator ite(this , _size) ;// 終了
 			return ite ;
 		}
 	
-		
+		//  削除
 		const iterator erase(const iterator& ite)
 		{
 			int index = ite._index ;
-			if( index < 0 || _size <= index ) return ite ;
+			if( index < 0 || _size <= index ) return ite ;// 削除範囲外
 	
 	
-			
+			// 削除(メモリをシフトする)、最後の一つを削除する場合はmove不要
 			if( index < _size-1 ) memmove( &(_ptr[index]) , &(_ptr[index+1]) , sizeof(T)*(_size-index-1) ) ;
 			--_size ;
 	
-			iterator ite2(this , index) ;
+			iterator ite2(this , index) ;// 終了
 			return ite2 ;
 		}
 	
-		
+		//  削除
 		const const_iterator erase(const const_iterator& ite)
 		{
 			int index = ite._index ;
-			if( index < 0 || _size <= index ) return ite ;
+			if( index < 0 || _size <= index ) return ite ;// 削除範囲外
 	
-			
+			// 削除(メモリをシフトする)、最後の一つを削除する場合はmove不要
 			if( index < _size-1 ) memmove( &(_ptr[index]) , &(_ptr[index+1]) , sizeof(T)*(_size-index-1) ) ;
 	
 			--_size ;
 	
-			const_iterator ite2(this , index) ;
+			const_iterator ite2(this , index) ;// 終了
 			return ite2 ;
 		}
 	
@@ -339,8 +339,8 @@ namespace live2d
 	
 	private:	
 		T * 			_ptr ;
-		int 			_size ;			
-		int 			_capacity ;		
+		int 			_size ;			// アイテム数
+		int 			_capacity ;		// キャパシティ。データサイズは_capacity * sizeof(T)  
 	
 		MemoryParam* 	memoryGroup ;
 	};
@@ -380,7 +380,7 @@ namespace live2d
 			_size = 0 ;
 		}
 		else{
-			_ptr = (T *)L2D_MALLOC( memParam ,  sizeof(T) * initialCapacity ) ;
+			_ptr = (T *)L2D_MALLOC( memParam ,  sizeof(T) * initialCapacity ) ;// ここだけ calloc により、確保したバイトを0で埋める
 	
 			if( zeroClear )
 			{
@@ -411,8 +411,8 @@ namespace live2d
 	//======================================================
 	//======================================================
 	//push_back
-	
-	
+	// push_back時にConstructorの呼び出しが必要な場合に、callPlacementNew = trueとする
+	// 実体の型の場合に必要、ポインタ、プリミティブ型の場合は不要
 	template<class T>
 	void LDVector<T>::push_back( const T& value , bool callPlacementNew )
 	{
@@ -422,7 +422,7 @@ namespace live2d
 			prepare_capacity( _capacity == 0 ? DEFAULT_SIZE : _capacity * 2 ) ;
 		}
 	
-		
+		// placement new 指定のアドレスに、実体を生成する
 		if( callPlacementNew )
 		{
 			L2D_PLACEMENT_NEW( &_ptr[ _size ++ ] ) T( value ) ;
@@ -460,7 +460,7 @@ namespace live2d
 					return ;
 				}
 				else{
-					memcpy( (void*)tmp , (void*)_ptr , sizeof(T) *_capacity ) ;
+					memcpy( (void*)tmp , (void*)_ptr , sizeof(T) *_capacity ) ;// 通常のMALLOCになったためコピーする
 					L2D_FREE( _ptr ) ;
 	
 					_ptr = tmp ;
@@ -499,13 +499,13 @@ namespace live2d
 		int cur_size = this->_size ;
 		if( cur_size < new_size )
 		{
-			prepare_capacity( new_size ) ;
+			prepare_capacity( new_size ) ;// capacity更新
 	
 			if( callPlacementNew )
 			{
 				for( int i = _size ; i < new_size ; i++ )
 				{
-					
+					// placement new 指定のアドレスに、実体を生成する
 					L2D_PLACEMENT_NEW ( &_ptr[ i ] ) T( value ) ;
 				}
 			}
@@ -520,7 +520,7 @@ namespace live2d
 			//---
 			for( int i = new_size ; i < _size ; i++ )
 			{
-				_ptr[i].~T() ;
+				_ptr[i].~T() ;// 不要なので破棄する
 			}
 	
 		}
@@ -533,7 +533,7 @@ namespace live2d
 	{
 		int cur_size = this->_size ;
 	
-		
+		// 全てデストラクト
 		for( int i = 0 ; i < _size ; i++ )
 		{
 			_ptr[i].~T() ;
@@ -543,14 +543,14 @@ namespace live2d
 		//
 		if( cur_size < new_size )
 		{
-			prepare_capacity( new_size ) ;
+			prepare_capacity( new_size ) ;// capacity更新
 		}
 	
 		if( callPlacementNew )
 		{
 			for( int i = 0 ; i < new_size ; i++ )
 			{
-				L2D_PLACEMENT_NEW ( &_ptr[ i ] ) T( value ) ;
+				L2D_PLACEMENT_NEW ( &_ptr[ i ] ) T( value ) ;// placement new 指定のアドレスに、実体を生成する
 			}
 		}
 		else{
@@ -578,14 +578,14 @@ namespace live2d
 		prepare_capacity( _size + addcount ) ;
 	
 	
-		
+		// 挿入用に既存データをシフトして隙間を作る
 		if( _size-dst_si > 0 )
 		{
 			memmove( &(_ptr[dst_si+addcount]) , &(_ptr[dst_si]) , sizeof(T)*(_size-dst_si) ) ;
 	
 		}
 	
-		
+		// placement new 指定のアドレスに、実体を生成する
 		if( callPlacementNew )
 		{
 			for( int i = src_si ; i < src_ei ; i++ , dst_si++ )

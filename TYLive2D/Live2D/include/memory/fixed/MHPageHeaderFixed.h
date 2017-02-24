@@ -1,4 +1,10 @@
-
+/*
+ *  MHPageHeaderFixed.h
+ *
+ *	一括破棄のみ対応したメモリページ
+ *  Copyright(c) Live2D Inc. All rights reserved.
+ *  [[ CONFIDENTIAL ]]
+ */
 
 #pragma once
 
@@ -15,7 +21,7 @@
 namespace live2d 
 {
 
-	class MHPageHeaderFixed : public APageHeader 
+	class MHPageHeaderFixed : public APageHeader // MemoryManagement対象外
 	{
 	public:
 		MHPageHeaderFixed();
@@ -28,22 +34,22 @@ namespace live2d
 		virtual void  free_exe( void* ptr ) ;
 
 	protected:
-		~MHPageHeaderFixed(){}
+		~MHPageHeaderFixed(){}// placement newを使い/deleteはしない
 
-	public:
-		MHPageHeaderFixed*	nextPage ;		
+	public:// ---　以下、パブリック参照を許可 ---
+		MHPageHeaderFixed*	nextPage ;		// [4-8]隣のページ
 
-	//	char*				startPtr ;		
-		char*				endPtr ;		
-		l2d_uint32			size ;			
+	//	char*				startPtr ;		// [4-8]ここに記憶する（確保後は固定）
+		char*				endPtr ;		// [4-8]ポインタの終端（確保後は固定、このアドレス自体は範囲外）
+		l2d_uint32			size ;			// [4-8]このページのメモリサイズ（確保後は固定）
 
-		char*				curPtr ;		
-		l2d_uint32			rest ;			
-		l2d_uint32			pageNo ;		
+		char*				curPtr ;		// [4-8]次に確保できるポインタ(AllocHeaderの先頭になる)（可変）
+		l2d_uint32			rest ;			// [4-8]このページの残りサイズ（可変）
+		l2d_uint32			pageNo ;		// [4]このページの通し番号（ID）
 
 
 		//--- static ---
-		static int			pageAmount ;	
+		static int			pageAmount ;	// 全体のページ数（開放しても減らさない）
 	};
 
 

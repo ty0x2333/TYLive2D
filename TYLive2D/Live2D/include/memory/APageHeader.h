@@ -1,4 +1,14 @@
-
+/*
+ *  APageHeader.h
+ *
+ *  メモリ保持のための抽象クラス
+ * 
+ *  通常のメモリ管理と、寿命管理型のメモリ管理を抽象化
+ * 
+ * 
+ *  Copyright(c) Live2D Inc. All rights reserved.
+ *  [[ CONFIDENTIAL ]]
+ */
 
 #pragma once
 
@@ -17,11 +27,11 @@ namespace live2d
 
 	//==========================================================
 	//==========================================================
-	class APageHeader 
-	//class APageHeader  : public LDUnmanagedObject 
+	class APageHeader // placement newを使い、deleteしない
+	//class APageHeader  : public LDUnmanagedObject // メモリ管理対象外
 	{
 	public:
-		const static int ENTRY_OFFSET = 64 ;
+		const static int ENTRY_OFFSET = 64 ;// ページの最初のデータへのオフセット（chunkは-4(32bit) -8(64bit))
 
 		APageHeader(){}
 
@@ -30,7 +40,7 @@ namespace live2d
 
 
 	protected:
-		~APageHeader(){}
+		~APageHeader(){}// placement newを使い/deleteはしない
 
 	};
 

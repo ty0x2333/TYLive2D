@@ -32,11 +32,11 @@ namespace live2d
 	#endif 
 		
 	public:
-		float originX;			
-		float originY;			
-		float scaleX;			
-		float scaleY;			
-		float rotateDeg;		
+		float originX;			// 原点X
+		float originY;			// 原点Y
+		float scaleX;			// 拡大率X
+		float scaleY;			// 拡大率Y。拡大率はXしか使用しない
+		float rotateDeg;		// 度。範囲なしで、ｎ回転を表現できる。	
 
 		bool reflectX ;		//SDK2.0
 		bool reflectY ;		//SDK2.0

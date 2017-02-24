@@ -26,14 +26,16 @@ namespace live2d
 		const char * toChar() const { return id.c_str() ; }
 	
 	
-		
-		
-		
+		// IDを生成する
+		//  ・同一の値を持つ全てのIDが、同じポインタを指すことを保証する （同一の確認が　== 比較 で良い） \n
+		//  ・Live2D::dispose()時に解放される
 		static ParamID * getID( const live2d::LDString & tmp_idstr ) ;
 		static ParamID * getID( const char*  tmp_idstr ) ;
 		static ParamID * getID(  const RefString& refStr ) ;
 	
-		
+		/*
+		 * リリース用メソッド（Live2D::diposeから呼ばれる)
+		 */
 		static void releaseStored_notForClientCall() ;
 	
 	
@@ -63,7 +65,7 @@ namespace live2d
 		static LDVector<ParamID*>* 		idlist ;		
 	
 	private:
-		live2d::LDString 				id ;			
+		live2d::LDString 				id ;			// ID文字列
 	};
 }
 //------------ LIVE2D NAMESPACE ------------

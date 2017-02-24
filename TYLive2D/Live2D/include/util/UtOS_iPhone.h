@@ -26,7 +26,7 @@ namespace live2d
 		static long long getTimeMSec() ;
 	
 	private:
-		UtOS_iPhone();
+		UtOS_iPhone();// インスタンス化させない
 
 		//Prevention of copy Constructor
 		UtOS_iPhone( const UtOS_iPhone & ) ;

@@ -28,7 +28,7 @@ namespace live2d
 		static void dumpPoints( float * array , int w , int h ) ;
 		
 	private:
-		UtArray();									
+		UtArray();									// インスタンス化させない
 
 		//Prevention of copy Constructor
 		UtArray( const UtArray & ) ;				

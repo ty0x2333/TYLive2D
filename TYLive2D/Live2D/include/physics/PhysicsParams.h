@@ -32,9 +32,9 @@ namespace live2d
 		virtual void updateSrc(live2d::ALive2DModel * model , PhysicsHair &hair ) ;
 
 	protected:
-		const char * 		paramID ;		
-		float 				scale ;			
-		float 				weight ;		
+		const char * 		paramID ;		// パラメータID（解放しない）
+		float 				scale ;			// 拡大率
+		float 				weight ;		// 重み
 	};
 
 
@@ -63,9 +63,9 @@ namespace live2d
 		virtual void updateTarget(live2d::ALive2DModel * model , PhysicsHair &hair ) ;
 
 	protected:
-		const char* 		paramID ;		
-		float 				scale ;			
-		float 				weight ;		
+		const char* 		paramID ;		// 解放しない
+		float 				scale ;			// 拡大率
+		float 				weight ;		// 重み
 	};
 
 

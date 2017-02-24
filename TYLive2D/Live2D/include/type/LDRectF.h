@@ -28,30 +28,25 @@ namespace live2d
 	
 		// Destructor
 		virtual ~LDRectF();
-
-		void setRect(LDRectF *r);
 	
 	public:
-		
+		//  中央X取得
 		l2d_pointf getCenterX(){ return x + 0.5f*width ; } 
 	
-		
+		//  中央Y取得
 		l2d_pointf getCenterY(){ return y + 0.5f*height; }
 	
-		
+		//  右端取得
 		l2d_pointf getRight(){ return x + width ; }
 	
-		
-		l2d_pointf geBottom(){ return y + height; }
-
-		
-		void expand(float w, float h);
+		//  下端取得
+		l2d_pointf geBottom(){ return y + height ; }
 		
 	public:
-		l2d_pointf x;				
-		l2d_pointf y;				
-		l2d_pointf width;			
-		l2d_pointf height;			
+		l2d_pointf x;				// 左端X
+		l2d_pointf y;				// 上端Y
+		l2d_pointf width;			// 幅
+		l2d_pointf height;			// 高さ
 	};
 }
 //------------------------- LIVE2D NAMESPACE ------------

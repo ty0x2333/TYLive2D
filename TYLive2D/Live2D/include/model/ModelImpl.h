@@ -67,7 +67,7 @@ namespace live2d
 		int						canvasWidth ;
 		int						canvasHeight ;
 	
-		MemoryParam*			memoryManagement ;
+		MemoryParam*			memoryManagement ;// 自身と同時に破棄されるオブジェクトのメモリを管理
 		AMemoryHolder*			memoryHolderFixedMain ;
 		AMemoryHolder*			memoryHolderFixedGPU ;
 	};

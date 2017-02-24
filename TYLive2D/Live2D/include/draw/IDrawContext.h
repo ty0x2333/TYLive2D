@@ -1,4 +1,11 @@
-
+/*
+ *  IContextData.h
+ *  
+ *  ImmutableのDrawData、BaseDataの描画用のデータを保持する。
+ *  
+ *  Created by joe on 11/04/29.
+ *  Copyright 2011 Live2D Inc. All rights reserved.
+ */
 
 #ifndef __LIVE2D_I_DRAW_DATA_H__
 #define __LIVE2D_I_DRAW_DATA_H__
@@ -11,38 +18,35 @@
 //------------ LIVE2D NAMESPACE ------------
 namespace live2d
 { 
-	class IDrawData;
-	class ClipContext;
+	class IDrawData ;
 	
 	class IDrawContext : public live2d::LDObject 
 	{
 	public:
 		IDrawContext(IDrawData* src) ;
-		virtual ~IDrawContext(){};
+		virtual ~IDrawContext(){}
 	
 		void* getSrcPtr(){ return this->srcPtr ; } 
 	
-		
+		//  パーツ番号セット
 		void setPartsIndex( int p ){ this->partsIndex = p ; }
 	
-		
+		//  パーツ番号取得
 		int getPartsIndex() { return this->partsIndex ; }
 	
-		
+		//  利用できるか取得　TODO 更新
 		bool isAvailable(){ return available && ! paramOutside ; }
 	
 	public:
-		int 			interpolatedDrawOrder ;		
-		float 			interpolatedOpacity ;		
+		int 			interpolatedDrawOrder ;		// 描画順の補間結果
+		float 			interpolatedOpacity ;		// 不透明度の補間結果
 		
-		bool			paramOutside ;				
+		bool			paramOutside ;				// 補間結果として、パラメータが範囲外のときに true 
 		
-		float			partsOpacity ;				
-		bool			available ;					
+		float			partsOpacity ;				// パーツの不透明度
+		bool			available ;					// TODO 更新
 	
-		float			baseOpacity;				
-
-		ClipContext		*clipBufPre_clipContext;	
+	    float			baseOpacity;		        // SDK2.0 所属するデフォーマの累積透明度
 
 	private:
 		IDrawData* 		srcPtr ;					

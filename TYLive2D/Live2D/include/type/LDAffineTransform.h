@@ -29,10 +29,10 @@ namespace live2d
 		void factorize(float* ret) const ;
 		void getMatrix(float* ret) const;//
 
-		
+		//  二つのアフィン変換を補間する
 		static void interpolate(LDAffineTransform &aa1, LDAffineTransform &aa2, float t, LDAffineTransform &ret) ;
 
-		
+		//  点列を変換する
 		void transform( float *src , float *dst , int numPoint ) ;
 
 	#if L2D_SAMPLE

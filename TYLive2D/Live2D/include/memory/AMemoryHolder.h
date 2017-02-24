@@ -1,4 +1,14 @@
-
+/*
+ *  AMemoryHolder.h
+ *
+ *  メモリ保持のための抽象クラス
+ * 
+ *  通常のメモリ管理と、寿命管理型のメモリ管理を抽象化
+ * 
+ * 
+ *  Copyright(c) Live2D Inc. All rights reserved.
+ *  [[ CONFIDENTIAL ]]
+ */
 
 #pragma once
 
@@ -17,7 +27,7 @@ namespace live2d
 	//==========================================================
 	class AllocHeader 
 	{
-		
+		// 継承しない（vtableを持たせない）
 	public:
 		void  free_exe( void* ptr ){ ptrToPageHeader->free_exe( ptr ) ; }
 
@@ -37,9 +47,9 @@ namespace live2d
 	class AMemoryHolder  : public LDObject //
 	{
 	public:
-		static const int		CHECK_VALUE = 0x600DC0DE ;
-		static const int		MIN_CHUNK_REST = 32 ;
-		static const int		MIN_ALIGN = 4 ;
+		static const int		CHECK_VALUE = 0x600DC0DE ;// Oはゼロであることに注意
+		static const int		MIN_CHUNK_REST = 32 ;// これ以下の残り容量の場合は、filledPageへ
+		static const int		MIN_ALIGN = 4 ;// アライメントがコレ以下の場合はこの値にする
 
 
 		AMemoryHolder();

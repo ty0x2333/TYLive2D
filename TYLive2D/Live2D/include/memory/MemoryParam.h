@@ -1,4 +1,13 @@
-
+/*
+ *  MemoryParam.h
+ *
+ * メモリ確保用パラメータ
+ * 
+ * 各種メソッドにこのパラメータを伝播させてメモリ管理を制御する。
+ * 
+ *  Copyright(c) Live2D Inc. All rights reserved.
+ *  [[ CONFIDENTIAL ]]
+ */
 
 
 #pragma once
@@ -19,7 +28,7 @@ namespace live2d
 	class MemoryPage ;
 
 	//----------------------------------------
-	class MemoryStackEnt : public LDUnmanagedObject
+	class MemoryStackEnt : public LDUnmanagedObject// ここだけはLDObjectを継承しない
 	{
 		friend class MemoryParam ;
 	public:
@@ -34,12 +43,12 @@ namespace live2d
 
 		int					allocType ;
 		int					align ;
-		AMemoryHolder*		holder ;
+		AMemoryHolder*		holder ;// 開放しない
 	} ;
 
 
 	//----------------------------------------
-	class MemoryParam : public LDObject
+	class MemoryParam : public LDObject// TmpをPlacement newにすることで、Tmpメモリ利用を可能に変更
 	{
 	public:
 
@@ -48,7 +57,7 @@ namespace live2d
 		
 		virtual ~MemoryParam() ;
 
-		
+		// Allocの設定を指定する(戻り値は直前の設定）
 		LDAllocator::Type  setAllocType( LDAllocator::Type  allocType )
 		{
 			LDAllocator::Type  ret = this->curAllocType	 ;
@@ -57,7 +66,7 @@ namespace live2d
 			return ret ;
 		}
 
-		
+		// Allocの設定を取り出す(戻り値は直前の設定）
 		int  setAllocAlign( int align )
 		{
 			int ret = this->curAlign ;
@@ -65,13 +74,13 @@ namespace live2d
 			return ret ;
 		}
 
-		
+		// Allocの設定を取り出す
 		LDAllocator::Type getAllocType( )
 		{
 			return this->curAllocType ;
 		}
 
-		
+		// Allocの設定を取り出す
 		int  getAllocAlign( )
 		{
 			return curAlign ;
@@ -92,13 +101,13 @@ namespace live2d
 
 		void clear() ;
 
-		
+		// 開放しないので外部で管理する
 		void setMemoryHolderMain(AMemoryHolder*	h)
 		{
 			this->memoryHolderMain = h ;
 		}
 
-		
+		// 開放しないので外部で管理する
 		void setMemoryHolderGPU(AMemoryHolder*	h)
 		{
 			this->memoryHolderGPU = h ;

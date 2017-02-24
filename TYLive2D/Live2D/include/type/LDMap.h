@@ -15,7 +15,7 @@
 #define l2d_map		live2d::LDMap
 
 #ifndef NULL
-#  define NULL	0
+#  define NULL    0
 #endif
 
 //--------- LIVE2D NAMESPACE ------------
@@ -59,10 +59,10 @@ namespace live2d
 	
 		void appendKey( _KeyT& key )
 		{
-			
-			prepare_capacity( _size + 1 , false ) ;
-			
-			
+			// 新しくKey/Valueのペアを作る
+			prepare_capacity( _size + 1 , false ) ;// １つ以上入る隙間を作る
+			// TODO error処理
+			// 新しいkey/valueのインデックスは _size
 	
 			void* addr = &_keyValues[_size] ;
 			L2D_PLACEMENT_NEW (addr) LDPair<_KeyT,_ValT>(key) ;//placement new
@@ -87,7 +87,7 @@ namespace live2d
 				return _keyValues[found].second ;
 			}
 			else{
-				appendKey( key ) ;
+				appendKey( key ) ;// 新規キーを追加
 				return _keyValues[_size-1].second ;
 			}
 		}
@@ -107,7 +107,7 @@ namespace live2d
 				return _keyValues[found].second ;
 			}
 			else{
-				
+				// TODO見つからない場合のエラー処理
 				if( ! DUMMY_VALUE_PTR ) DUMMY_VALUE_PTR = L2D_NEW(memoryGroup)  _ValT() ;
 				return *DUMMY_VALUE_PTR ;
 			}
@@ -155,23 +155,23 @@ namespace live2d
 				return *this ;
 			}
 			iterator& operator++()
-			{
+			{// 前置
 				this->_index ++ ;
 				return *this ;
 			}
 			iterator& operator--()
-			{
+			{// 前置
 				this->_index -- ;
 				return *this ;
 			}
 			iterator operator++(int)
-			{
-				iterator iteold( this->_map , this->_index++ ) ;
-				return iteold ;
+			{// intは後置のためのダミー引数
+			    iterator iteold( this->_map , this->_index++ ) ;// 古い値を保存
+				return iteold ;// 古い値を返す
 			}
 			iterator operator--(int)
-			{
-				iterator iteold( this->_map , this->_index-- ) ;
+			{// intは後置のためのダミー引数
+			    iterator iteold( this->_map , this->_index-- ) ;// 古い値を保存
 				return iteold ;
 			}
 			LDPair<_KeyT , _ValT>& operator*()const{
@@ -201,23 +201,23 @@ namespace live2d
 				return *this ;
 			}
 			const_iterator& operator++()
-			{
+			{// 前置
 				this->_index ++ ;
 				return *this ;
 			}
 			const_iterator& operator--()
-			{
+			{// 前置
 				this->_index -- ;
 				return *this ;
 			}
 			const_iterator operator++(int)
-			{
-				const_iterator iteold( this->_map , this->_index++ ) ;
-				return iteold ;
+			{// intは後置のためのダミー引数
+			    const_iterator iteold( this->_map , this->_index++ ) ;// 古い値を保存
+				return iteold ;// 古い値を返す
 			}
 			const_iterator operator--(int)
-			{
-				const_iterator iteold( this->_map , this->_index-- ) ;
+			{// intは後置のためのダミー引数
+			    const_iterator iteold( this->_map , this->_index-- ) ;// 古い値を保存
 				return iteold ;
 			}
 			LDPair<_KeyT , _ValT>& operator*()const{
@@ -238,33 +238,33 @@ namespace live2d
 		}
 	
 		const const_iterator end() const {
-			const_iterator ite(this , _size) ;
+			const_iterator ite(this , _size) ;// 終了
 			return ite ;
 		}
 	
 		const iterator erase(const iterator& ite)
 		{
 			int index = ite._index ;
-			if( index < 0 || _size <= index ) return ite ;
+			if( index < 0 || _size <= index ) return ite ;// 削除範囲外
 	
-			
+			// 削除(メモリをシフトする)、最後の一つを削除する場合はmove不要
 			if( index < _size-1 ) memmove( &(_keyValues[index]) , &(_keyValues[index+1]) , sizeof(LDPair<_KeyT , _ValT>)*(_size-index-1) ) ;
 			--_size ;
 	
-			iterator ite2(this , index) ;
+			iterator ite2(this , index) ;// 終了
 			return ite2 ;
 		}
 	
 		const const_iterator erase(const const_iterator& ite)
 		{
 			int index = ite._index ;
-			if( index < 0 || _size <= index ) return ite ;
+			if( index < 0 || _size <= index ) return ite ;// 削除範囲外
 	
-			
+			// 削除(メモリをシフトする)、最後の一つを削除する場合はmove不要
 			if( index < _size-1 ) memmove( &(_keyValues[index]) , &(_keyValues[index+1]) , sizeof(LDPair<_KeyT , _ValT>)*(_size-index-1) ) ;
 			--_size ;
 	
-			const_iterator ite2(this , index) ;
+			const_iterator ite2(this , index) ;// 終了
 			return ite2 ;
 		}
 	
@@ -281,18 +281,18 @@ namespace live2d
 	
 		LDPair<_KeyT , _ValT> * _keyValues ;
 	
-		//static _ValT DUMMY_VALUE ;
-		_ValT* DUMMY_VALUE_PTR ;
+		//static _ValT DUMMY_VALUE ;// 空の値を返すためのダミー
+		_ValT* DUMMY_VALUE_PTR ;// 空の値を返すためのダミー(staticのtemplteを回避するためメンバとする）
 	
 	
 		int _size ;
 		int _capacity ;
 	
-		
-		
-		
-		
-		
+		// メモリを確保するためのグループ
+		// 指定した場合は、追加したメモリがmemoryGroupに蓄積されmemoryGroup破棄時に一斉に破棄される
+		// 中身を元データの寿命に一致させたい場合に指定する。基本的に初期化時・ロード時にデータサイズ
+		// が確定して、その後のモーション等で拡張されない場合にのみ指定する。
+		// 自由に確保・開放を繰り返す場合は指定してはならない。
 		MemoryParam* memoryGroup ;
 	};
 	
@@ -320,7 +320,7 @@ namespace live2d
 			_size = 0 ;
 		}
 		else{
-			_keyValues = (LDPair<_KeyT , _ValT> *)L2D_MALLOC( memoryGroup , size * sizeof(LDPair<_KeyT , _ValT>) ) ;
+			_keyValues = (LDPair<_KeyT , _ValT> *)L2D_MALLOC( memoryGroup , size * sizeof(LDPair<_KeyT , _ValT>) ) ;// ここだけ calloc により、確保したバイトを0で埋める
 			memset( _keyValues , 0, size * sizeof(LDPair<_KeyT , _ValT>) ) ;
 	
 			if( _keyValues == NULL )
@@ -366,7 +366,7 @@ namespace live2d
 				_capacity = newsize ;
 			}
 			else{
-				if( ! fitToSize && newsize < _capacity*2 ) newsize = _capacity*2 ;
+				if( ! fitToSize && newsize < _capacity*2 ) newsize = _capacity*2 ;// 指定サイズに合わせる必要がない場合は、２倍に広げる
 	
 				int tmp_capacity = newsize ;
 				LDPair<_KeyT,_ValT>* tmp = (LDPair<_KeyT , _ValT> *)L2D_MALLOC( memoryGroup , sizeof(LDPair<_KeyT,_ValT>) * tmp_capacity ) ;
@@ -377,11 +377,11 @@ namespace live2d
 					return ;
 				}
 				else{
-					
+					// 通常のMALLOCになったためコピーする
 					memcpy( (void*)tmp , (void*)_keyValues , sizeof(LDPair<_KeyT,_ValT>) *_capacity ) ;
 					L2D_FREE( _keyValues ) ;
 	
-					_keyValues = tmp ;
+					_keyValues = tmp ;// そのまま
 					_capacity = newsize ;
 				}
 	

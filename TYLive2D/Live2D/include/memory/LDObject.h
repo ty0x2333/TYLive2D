@@ -25,7 +25,7 @@ namespace live2d { //--------- LIVE2D NAMESPACE ------------
 		LDObject(void) ;
 		virtual ~LDObject(void) ;
 
-		
+		// --- L2D_MEM_TMPにメモリを配置 ---
 		static void* operator new(l2d_size_t size) ;
 		static void operator delete(void* ptr ) ;
 		

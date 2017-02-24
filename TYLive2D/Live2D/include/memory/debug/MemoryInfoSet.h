@@ -13,7 +13,7 @@
 #include "../../Live2D.h"
 
 #ifndef NULL
-#  define NULL	0
+#  define NULL    0
 #endif
 
 
@@ -27,7 +27,7 @@ namespace live2d
 
 
 	//******************************************************
-	class MemoryInfoSet 
+	class MemoryInfoSet // デバッグ用なので管理外
 	{
 		friend class UtMemory ;
 		friend class MemoryInfo ;
@@ -41,26 +41,26 @@ namespace live2d
 		void addMemoryInfo( void* ptr , MemoryParam* owner , l2d_size_t size , const char* filename , int lineno ) ;
 		void removeMemoryInfo( void* ptr ) ;
 
-		int getMallocTotal(){ return mallocTotal ; }	
-		int	getRestCount(){ return restCount ; }		
-		int	getTotalMemory(){ return totalMemory ; }	
+		int getMallocTotal(){ return mallocTotal ; }	// mallocの回数をカウント
+		int	getRestCount(){ return restCount ; }		// 確保しているポインタ数をカウント (mallocで++ , freeで--)
+		int	getTotalMemory(){ return totalMemory ; }	// 累積メモリ
 
-		int getCurMemory(){ return curMemory ; }		
-		int getPeakMemory(){ return peakMemory ; }		
+		int getCurMemory(){ return curMemory ; }		// 現在のメモリ
+		int getPeakMemory(){ return peakMemory ; }		// 最大時のメモリ
 
 	private:
 		const char*		setName ;
 
-		int				mallocTotal ;			
-		int				restCount ;				
-		int				totalMemory ;			
-		int				curMemory ;				
-		int				peakMemory ;			
+		int				mallocTotal ;			// mallocの回数をカウント
+		int				restCount ;				// 確保しているポインタ数をカウント (mallocで++ , freeで--)
+		int				totalMemory ;			// 累積メモリ
+		int				curMemory ;				// 現在のメモリ
+		int				peakMemory ;			// 最大時のメモリ
 
-		MemoryInfo*		usingMemoryInfo ;		
-		MemoryInfo*		lastUsingMemoryInfo ;	
-		MemoryInfo*		freeMemoryInfo ;		
-		MemoryInfo*		lastFreeMemoryInfo ;	
+		MemoryInfo*		usingMemoryInfo ;		// 使用中メモリ情報の先頭（連結リスト）
+		MemoryInfo*		lastUsingMemoryInfo ;	// 使用中メモリ情報リストの最後尾（連結リスト）
+		MemoryInfo*		freeMemoryInfo ;		// 解放済みメモリ情報リスト（連結リスト）
+		MemoryInfo*		lastFreeMemoryInfo ;	// 解放済みメモリ情報リストの最後尾（連結リスト）
 	};
 }
 //--------- LIVE2D NAMESPACE ------------

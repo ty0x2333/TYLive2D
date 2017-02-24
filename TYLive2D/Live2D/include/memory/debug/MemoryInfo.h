@@ -19,12 +19,12 @@ namespace live2d
 	class AMemoryHolder ;
 
 	#ifndef NULL
-	#  define NULL	0
+	#  define NULL    0
 	#endif
 
 
 	//******************************************************
-	class MemoryInfo 
+	class MemoryInfo // デバッグ用なので管理外
 	{
 		friend class UtMemory ;
 		friend class MemoryInfoSet ;

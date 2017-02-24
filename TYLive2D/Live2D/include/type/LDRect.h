@@ -29,23 +29,23 @@ namespace live2d
 		virtual ~LDRect();
 		
 	public:
-		
+		//  中央X座標取得
 		int getCenterX(){ return x + width/2 ; } 
 	
-		
+		//  中央Y座標取得
 		int getCenterY(){ return y + height/2 ; }
 	
-		
+		//  右端取得
 		int getRight(){ return x + width ; }
 	
-		
+		//  一番下取得
 		int geBottom(){ return y + height ; }
 		
 	public:
-		int x;			
-		int y;			
-		int width;		
-		int height;		
+		int x;			// 左端となるX座標
+		int y;			// 上端となるY座標
+		int width;		// 矩形の幅
+		int height;		// 矩形の高さ
 		
 	};
 

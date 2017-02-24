@@ -33,41 +33,41 @@ namespace live2d
 		virtual ~Live2DMotion();
 		
 	public:
-		
+		//  パラメータ更新
 		virtual void updateParamExe( live2d::ALive2DModel * model , long long timeMSec , float weight , MotionQueueEnt *motionQueueEnt) ;
 
-		
+		//  ループ設定
 		void setLoop( bool _loop ){ this->loop = _loop ; }
 
-		
+		//  ループするか?
 		bool isLoop( ){ return this->loop ; }
 		
-		
+		//  ループ時にフェードインが有効かどうかを設定する。デフォルトでは有効。
 		void setLoopFadeIn( bool _loopFadeIn ){ this->loopFadeIn = _loopFadeIn ; }
 		
-		
+		//  ループ時のフェードインが有効かどうかを取得
 		bool isLoopFadeIn( ){ return this->loopFadeIn ; }
 		
-		
+		//  モーションの長さを返す。ループの時は-1
 		virtual int getDurationMSec() ;
 		
 		
-		
+		//  mtnファイルで定義されている一連のモーションの長さを返す
 		virtual int getLoopDurationMSec()
 		{
 			return loopDurationMSec ; 
 		}
 
-		
+		//  モーションデータをロード(2byte文字非対応)
 		static Live2DMotion * loadMotion( const live2d::LDString & filepath ) ;
-		
+		//  モーションデータをロード(2byte文字非対応)
 		static Live2DMotion * loadMotion( const void * buf , int bufSize ) ;
 		
 		void dump() ;
 		
 
 		//SDK2.0
-		
+		// パラメータごとのフェードの設定
 		//void setParamFadeIn(const char* paramID,int value);
 		//void setParamFadeOut(const char* paramID,int value);
 		void setParamFadeIn(LDString paramID,int value);
@@ -78,15 +78,15 @@ namespace live2d
 
 
 	private:
-		live2d::LDVector<Motion*>* 	motionsPtr ;			
+		live2d::LDVector<Motion*>* 	motionsPtr ;			//  モーションリスト
 
-		float 						srcFps ;				
-		int 						maxLength ;				
+		float 						srcFps ;				//  ロードしたファイルのFPS。記述が無ければデフォルト値15fpsとなる
+		int 						maxLength ;				//  
 
-		int 						loopDurationMSec ;		
-		bool 						loop ;					
-		bool 						loopFadeIn;				
-		int 						objectNoForDebug ;		
+		int 						loopDurationMSec ;		//  mtnファイルで定義される一連のモーションの長さ
+		bool 						loop ;					//  ループするか?
+		bool 						loopFadeIn;				//  ループ時にフェードインが有効かどうかのフラグ。初期値では有効。
+		int 						objectNoForDebug ;		//  デバッグ用
 		
 		float 						lastWeight ;
 		live2d::MemoryParam*		memoryManagement ;
@@ -98,7 +98,9 @@ namespace live2d
 
 #ifndef __SKIP_DOC__
 
-	
+	/***************************************************************************
+	一つのパラメータについてのアクション定義
+	***************************************************************************/
 	class Motion : public live2d::LDObject
 	{
 	public:
@@ -107,7 +109,7 @@ namespace live2d
 		static const int MOTION_TYPE_PARAM_FADEIN = 2 ;//SDK2.0
 		static const int MOTION_TYPE_PARAM_FADEOUT = 3 ;//SDK2.0
 		
-		
+		// 順序変更不可（ < で比較しているため ）
 		static const int MOTION_TYPE_LAYOUT_X = 100 ;
 		static const int MOTION_TYPE_LAYOUT_Y = 101 ;
 		static const int MOTION_TYPE_LAYOUT_ANCHOR_X = 102 ;
@@ -123,18 +125,18 @@ namespace live2d
 		int getParamIndex( live2d::ALive2DModel* model ) ;
 
 	public:
-		live2d::LDString * 			paramIDStr ;				
+		live2d::LDString * 			paramIDStr ;				//  パラメータID文字列
 		
-		live2d::ParamID* 			cached_paramID ;			
+		live2d::ParamID* 			cached_paramID ;			//  複数のモデルでモーションを使いまわすとIndexのキャッシュができない
 		int  						cached_paramIndex ;			//
 		live2d::ALive2DModel* 		cached_model_ofParamIndex ;
 
 		live2d::LDVector<float> 	values ;
 		
-		int 						motionType ;				
+		int 						motionType ;				//  モーションタイプ
 
 		//SDK2.0
-		int 	fadeInMsec ;		
+		int 	fadeInMsec ;		// このパラメータのフェードインする時間。無効値のときはモーション全体の設定を優先する
 		int 	fadeOutMsec ;		
 	};
 

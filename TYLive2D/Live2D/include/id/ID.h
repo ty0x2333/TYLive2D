@@ -22,10 +22,10 @@ namespace live2d
 		virtual ~ID();
 		
 	public:
-		
+		//  リリース用メソッド（Live2D::diposeから呼ばれる)
 		static void staticInit_notForClientCall() ;
 		
-		
+		//  リリース用メソッド（Live2D::diposeから呼ばれる)
 		static void staticRelease_notForClientCall() ;
 	
 	protected:

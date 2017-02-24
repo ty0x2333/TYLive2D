@@ -38,9 +38,9 @@ namespace live2d
 		inline ParamID* getParamID(){ return paramID ; }
 		
 	private:
-		float 				minValue ;		
-		float 				maxValue ;		
-		float 				defaultValue;	
+		float 				minValue ;		// パラメータの最小値
+		float 				maxValue ;		// パラメータの最大値
+		float 				defaultValue;	// パラメータのデフォルト値
 		
 		ParamID *			paramID ;		//shared
 	

@@ -1,4 +1,19 @@
-
+/*************************************************************************
+ * Json
+ * 
+ * Ascii文字のみ対応した最小限の軽量JSONパーサ。
+ * 仕様はJSONのサブセットとなる。
+ * 
+ * 設定ファイルなどのロード用
+ * 
+ * 未対応項目
+ * ・日本語などの非ASCII文字
+ * ・e による指数表現
+ *
+ *  Copyright(c) Live2D Inc. All rights reserved.
+ *  [[ CONFIDENTIAL ]]
+ * version 1.0.2
+ ***************************************************************************/
 #ifndef __LIVE2D_JSON_H__
 #define __LIVE2D_JSON_H__
 
@@ -27,10 +42,10 @@ namespace live2d
 		friend class Array;
 
 	public:
-		static Value * 	ERROR_VALUE;			
-												
-		static Value * 	NULL_VALUE;				
-		
+		static Value * 	ERROR_VALUE;			// 一時的な返り値として返すエラー。L2D_DELETEしないようにする。rootとして保持する場合はnew Error(とする
+												// ERRORからERROR_VALUEに修正 ( DirectXにてWinGDI.hのERRORマクロと重複して問題になるため )
+		static Value * 	NULL_VALUE;				// 一時的な返り値として返すNULL。L2D_DELETEしないようにする
+	    
 	public:
 		// Constructor
 		Value(MemoryParam* memParam):memParam(memParam){}
@@ -111,15 +126,15 @@ namespace live2d
 		virtual bool equals( bool v ){ return false; }
 		
 		// 
-		virtual bool isStatic(){ return false; }
+		virtual bool isStatic(){ return false; }// staticなら解放しない
 
 		//
 		virtual Value* setError_notForClientCall(const char* errorStr){ return ERROR_VALUE; }//Override by Error#setError
 
-		
+		// 初期化用メソッド（Live2D::initから呼ばれる)
 		static void staticInit_notForClientCall();
 
-		
+		// リリース用メソッド（Live2D::diposeから呼ばれる)
 		static void staticRelease_notForClientCall();
 
 	protected:
@@ -165,8 +180,8 @@ namespace live2d
 		// 
 		bool checkEOF(){ return (*root)[1].equals("EOF"); }
 
-		
-		
+		// staticでJSONの解析結果を生成
+		// buf は外部で管理（破棄）する必要がある
 	public:
 		// 
 		static Json* parseFromBytes( const char * buf, int length, int encoding = UTF8 );
@@ -192,10 +207,10 @@ namespace live2d
 		
 		
 	private:
-		int encoding;			
-		int line_count;			
-		const char *error;		
-		Value *root;			
+		int encoding;			// マルチバイト文字のエンコーディング
+		int line_count;			// エラー報告用
+		const char *error;		// パース時のエラー
+		Value *root;			// パースされたルートデータ
 
 		MemoryParam*	memoryManagement ;
 		AMemoryHolder*	memoryHolderFixedMain ;
@@ -219,17 +234,17 @@ namespace live2d
 		// Number
 		virtual bool isDouble(){ return true; }
 
-		
+		// 主にデバッグ用
 		virtual live2d::LDString toString( const live2d::LDString &defaultV = "", const live2d::LDString& indent = "") const 
 		{ 
 
-#if defined( L2D_TARGET_D3D ) || defined( L2D_TARGET_D3D11 ) || defined ( L2D_TARGET_WIN_GL ) ||defined (L2D_TARGET_D3D_OPEN)
+#if defined( L2D_TARGET_D3D ) || defined ( L2D_TARGET_WIN_GL ) ||defined (L2D_TARGET_D3D_OPEN)
 			char strbuf[32] = {'\0'};
 			_snprintf_s(strbuf, 32, 32, "%f", this->value );
 			return strbuf;
 
 #else
-			
+			// string stream 未対応
 			char strbuf[32] = {'\0'};
 			snprintf(strbuf, 32, "%f", this->value );
 			return strbuf;
@@ -304,7 +319,7 @@ namespace live2d
 		// 
 		virtual bool equals( double v ){ return false; }
 
-		
+		// staticなら開放しない
 		virtual bool isStatic(){ return true; }
 		
 	private:
@@ -395,7 +410,7 @@ namespace live2d
 		virtual ~NullValue(){}
 
 	public:
-		
+		// NULLチェック
 		virtual bool isNull(){ return true; }
 
 		// 
@@ -424,24 +439,24 @@ namespace live2d
 		virtual ~Array() ;
 
 	public:
-		
+		// Arrayチェック
 		virtual bool isArray(){ return true; }
 		
-		
+		// 
 		virtual Value &operator[]( int index )
 		{ 
-			if( index < 0 || (int)array.size() <= index ) return *(ERROR_VALUE->setError_notForClientCall(L2D_JSON_ERROR_INDEX_OUT_OF_BOUNDS)) ;
-			Value * v = array[ index ] ;
-			
-			if( v == NULL ) return *Value::NULL_VALUE ;
-			return *v ;
+    		if( index < 0 || (int)array.size() <= index ) return *(ERROR_VALUE->setError_notForClientCall(L2D_JSON_ERROR_INDEX_OUT_OF_BOUNDS)) ;
+    		Value * v = array[ index ] ;
+	    	
+    		if( v == NULL ) return *Value::NULL_VALUE ;
+    		return *v ;
 		}
 
 
 		// 
 		virtual Value &operator[]( const live2d::LDString& s ) { return *(ERROR_VALUE->setError_notForClientCall(L2D_JSON_ERROR_TYPE_MISMATCH)) ; }
 
-		
+		// 主にデバッグ用
 		virtual live2d::LDString toString( const live2d::LDString &defaultV = "", const live2d::LDString &indent = "") const
 		{
 			live2d::LDString ret = indent + "[\n"; 
@@ -479,18 +494,18 @@ namespace live2d
 		virtual ~Map();
 		
 	public:
-		
+		// Mapチェック 
 		virtual bool isMap(){ return true; }
 
 		// 
 		virtual Value &operator[]( const live2d::LDString& s )
 		{ 
-			Value* ret = map[ s ];			
-			if( ret == NULL )
+    		Value* ret = map[ s ];	    	
+    		if( ret == NULL )
 			{
 				return *Value::NULL_VALUE;
 			}
-			return *ret ;
+    		return *ret ;
 		}
 
 		// 

@@ -1,4 +1,11 @@
-
+/*
+ *  BDBoxGrid.h
+ * 
+ *  格子状の点による座標変換
+ * 
+ *  Copyright(c) Live2D Inc. All rights reserved.
+ *  [[ CONFIDENTIAL ]]
+ */
 #ifndef __LIVE2D_BD_BOX_GRID_H__
 #define __LIVE2D_BD_BOX_GRID_H__
 
@@ -64,11 +71,11 @@ namespace live2d
 				, int numPoint , int pt_offset , int pt_step ) ;
 
 	private:
-		int							col ;			
-		int							row ;			
+		int							col ;			// 列数（面の数なので 点数は+1 ）
+		int							row ;			// 行数
 		 
-		PivotManager*				pivotManager ;	
-		LDVector<l2d_pointf*>*		pivotPoints ;	
+		PivotManager*				pivotManager ;	// パラメータと関連して補間する要素を管理
+		LDVector<l2d_pointf*>*		pivotPoints ;	// 格子を形成する点列[numPivots][ 2*(col+1) *(row+1) ]
 	};
 	
 	
@@ -79,9 +86,9 @@ namespace live2d
 		virtual ~BDBoxGridContext() ;
 		
 	public:
-		int 				tmpBaseDataIndex ;		
-		l2d_pointf * 		interpolatedPoints ; 	
-		l2d_pointf * 		transformedPoints ;		
+		int 				tmpBaseDataIndex ;		// IBaseDataのインデックス。不変なので一度取得すればよい
+		l2d_pointf * 		interpolatedPoints ; 	// 補間済み配列(localToTarget) row(y) が外側のループ　, col(x) 内側のループ 　（通常の画像と同じ並び for(y){ for(x){ x,y }  }
+		l2d_pointf * 		transformedPoints ;		// 変換済み配列(localToDst)
 	} ;
 } 
 //------------ LIVE2D NAMESPACE ------------

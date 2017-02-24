@@ -42,7 +42,10 @@ namespace live2d
 				, int numPoint , int pt_offset , int pt_step ) ;
 		
 		
-		
+		/***************************************************************
+		@brief	変換の型を返す
+		@return	IBaseData::TYPE_BD_AFFINE
+		***************************************************************/
 		virtual int getType()
 		{
 			return IBaseData::TYPE_BD_AFFINE ;
@@ -72,9 +75,9 @@ namespace live2d
 		virtual ~BDAffineContext() ;
 		
 	public:		
-		int 			tmpBaseDataIndex ;		
-		AffineEnt*		interpolatedAffine ;	
-		AffineEnt*		transformedAffine ;		
+		int 			tmpBaseDataIndex ;		// IBaseDataのインデックス。不変なので一度取得すればよい
+		AffineEnt*		interpolatedAffine ;	//
+		AffineEnt*		transformedAffine ;		//
 	} ;
 }
 // --------------------------- LIVE2D NAMESPACE ------------

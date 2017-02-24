@@ -1,4 +1,11 @@
-
+/**
+ *  MemoryHolderFixed.h
+ *
+ *  固定寿命インスタンス用のメモリ保持用クラス
+ * 
+ *  Copyright(c) Live2D Inc. All rights reserved.
+ *  [[ CONFIDENTIAL ]]
+ */
 
 #pragma once
 
@@ -41,12 +48,12 @@ namespace live2d
 		void clear_exe( MHPageHeaderFixed* page ) ;
 
 	private:
-		MHPageHeaderFixed*			curPages ;		
-		MHPageHeaderFixed*			filledPages ;	
+		MHPageHeaderFixed*			curPages ;		// 未使用領域が残るList
+		MHPageHeaderFixed*			filledPages ;	// 全て使い切ったList
 		LDAllocator::Type			allocType ;
-		const char*					holderName ;	
-		int							holderNo ;		
-		l2d_size_t						pageSize ;		
+		const char*					holderName ;	// MemoryHolderの識別名
+		int							holderNo ;		// MemoryHolderの何番目のインスタンスか
+		l2d_size_t						pageSize ;		// 新規作成時のPageのサイズ
 		static l2d_size_t				defaultPageSize ;
 	};
 

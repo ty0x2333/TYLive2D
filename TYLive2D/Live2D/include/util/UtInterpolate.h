@@ -27,30 +27,30 @@ namespace live2d
 	class UtInterpolate 
 	{
 	public:
-		
+		// 点列を補間する
 		static void interpolatePoints(
 				ModelContext &mdc 
 				, PivotManager &pivotManager
-				, bool *ret_paramOutside	
+				, bool *ret_paramOutside	// パラメータが定義範囲外の時に、trueがセットされて返される 
 				,int numPts 
-				, LDVector<l2d_pointf*> &pivotPoints 
+				, LDVector<l2d_pointf*> &pivotPoints // [][]に相当
 				, l2d_pointf * dst_points
 				, int pt_offset , int pt_step ) ;
 	
-		
+		// float補間	
 		static float interpolateFloat(
 				ModelContext &mdc , 
 				PivotManager &pivotManager	,
-				bool *ret_paramOutside	,
+				bool *ret_paramOutside	,// パラメータが定義範囲外の時に、trueがセットされて返される 
 				LDVector<float> & pivotValue 
-		) ; 
+		) ; // []に相当
 	
-		
+		// int補間	
 		static int interpolateInt(
 				ModelContext &mdc , 
 				PivotManager &pivotManager	,
-				bool *ret_paramOutside ,
-				LDVector<int> & pivotValue ) ; 
+				bool *ret_paramOutside ,// パラメータが定義範囲外の時に、trueがセットされて返される 
+				LDVector<int> & pivotValue ) ; // []に相当
 	
 	private:
 		UtInterpolate();		
