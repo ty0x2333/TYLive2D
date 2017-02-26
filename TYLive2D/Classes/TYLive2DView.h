@@ -14,4 +14,12 @@
 
 - (void)loadModel:(TYLive2DModel *)model;
 
+- (void)setValue:(CGFloat)value forParam:(NSString *)param;
+
+- (CGFloat)valueForParam:(NSString *)param;
+
+- (void)setValue:(CGFloat)value forPart:(NSString *)part;
+
+- (CGFloat)valueForPart:(NSString *)part;
+
 @end

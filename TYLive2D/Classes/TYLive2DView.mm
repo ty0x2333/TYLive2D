@@ -114,4 +114,22 @@
                                    userInfo:nil repeats:TRUE];
 }
 
+#pragma mark - Setter / Getter
+
+- (void)setValue:(double)value forParam:(NSString *)param {
+    self.live2DModel->setParamFloat(param.UTF8String, value);
+}
+
+- (CGFloat)valueForParam:(NSString *)param {
+    return self.live2DModel->getParamFloat(param.UTF8String);
+}
+
+- (void)setValue:(CGFloat)value forPart:(NSString *)part {
+    self.live2DModel->setPartsOpacity(part.UTF8String, value);
+}
+
+- (CGFloat)valueForPart:(NSString *)part {
+    return self.live2DModel->getPartsOpacity(part.UTF8String);
+}
+
 @end
