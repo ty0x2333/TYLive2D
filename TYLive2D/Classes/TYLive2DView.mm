@@ -17,42 +17,31 @@
 #import "Live2DModelIPhone.h"
 #import "TYLive2DModel.h"
 
-@interface TYLive2DView ()
+@interface TYLive2DView ()<GLKViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *textures;
 @property (nonatomic, strong) EAGLContext *context;
-@property (nonatomic, assign) GLint deviceWidth;
-@property (nonatomic, assign) GLint deviceHeight;
-@property (nonatomic, assign) GLuint defaultFramebuffer;
-@property (nonatomic, assign) GLuint colorRenderbuffer;
 @property (nonatomic, assign) live2d::Live2DModelIPhone *live2DModel;
 @property (nonatomic, strong) TYLive2DModel *model;
+
+@property (nonatomic, strong) GLKView *contentView;
 
 @end
 
 @implementation TYLive2DView
 
-+ (Class)layerClass {
-    return [CAEAGLLayer class];
-}
-
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        CAEAGLLayer *eaglLayer = (CAEAGLLayer *)self.layer;
-        self.contentScaleFactor = [UIScreen mainScreen].scale ;
-        eaglLayer.opaque = TRUE;
-        
         _context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES1];
-        
         if (!_context || ![EAGLContext setCurrentContext:_context]) {
             return nil;
         }
-        glGenFramebuffersOES(1, &_defaultFramebuffer);
-        glGenRenderbuffersOES(1, &_defaultFramebuffer);
-        glBindFramebufferOES(GL_FRAMEBUFFER_OES, _defaultFramebuffer);
-        glBindRenderbufferOES(GL_RENDERBUFFER_OES, _defaultFramebuffer);
-        glFramebufferRenderbufferOES(GL_FRAMEBUFFER_OES, GL_COLOR_ATTACHMENT0_OES, GL_RENDERBUFFER_OES, _defaultFramebuffer);
-
+        
+        _contentView = [[GLKView alloc] init];
+        _contentView.delegate = self;
+        _contentView.context = _context;
+        _contentView.drawableDepthFormat = GLKViewDrawableDepthFormat24;
+        [self addSubview:_contentView];
     }
     return self;
 }
@@ -71,48 +60,23 @@
     }
 }
 
-- (void)drawView {
-    [EAGLContext setCurrentContext:_context];
-    
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-    glClear(GL_COLOR_BUFFER_BIT);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_ONE , GL_ONE_MINUS_SRC_ALPHA );
-    glDisable(GL_DEPTH_TEST) ;
-    glDisable(GL_CULL_FACE) ;
-    
-    _live2DModel->update();
-    _live2DModel->draw();
-    
-    [_context presentRenderbuffer:GL_RENDERBUFFER_OES];
-}
-
 - (void)layoutSubviews {
     [super layoutSubviews];
-    [_context renderbufferStorage:GL_RENDERBUFFER_OES fromDrawable:(CAEAGLLayer *)self.layer];
-    glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_WIDTH_OES, &_deviceWidth);
-    glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_HEIGHT_OES, &_deviceHeight);
-    
-    glViewport(0, 0, _deviceWidth, _deviceHeight);
-    
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    
-    float modelWidth = _live2DModel->getCanvasWidth();
+    _contentView.frame = self.bounds;
+}
 
-    glOrthof(
-             0,
-             modelWidth,
-             modelWidth * _deviceHeight / _deviceWidth,
-             0,
-             0.5f, -0.5f
-             );
+#pragma mark - GLKViewDelegate
+
+- (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
+    glClearColor(1.0, 1.0, 1.0, 1.0);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    [NSTimer scheduledTimerWithTimeInterval:(NSTimeInterval)(1 / 60)
-                                     target:self
-                                   selector:@selector(drawView)
-                                   userInfo:nil repeats:TRUE];
+    glLoadIdentity();
+    float modelWidth = _live2DModel->getCanvasWidth();
+    glOrthof(0, modelWidth, modelWidth * CGRectGetHeight(self.bounds) / CGRectGetWidth(self.bounds), 0, 0.5f, -0.5f);
+    
+    self.live2DModel->update();
+    self.live2DModel->draw();
 }
 
 #pragma mark - Setter / Getter
