@@ -29,5 +29,6 @@
 
 @property (nonatomic) NSInteger preferredFramesPerSecond;
 @property (nonatomic, getter=isPaused) BOOL paused;
+@property (nonatomic, assign, readonly) CGSize canvasSize;
 
 @end

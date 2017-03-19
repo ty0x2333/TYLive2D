@@ -157,4 +157,8 @@
     }];
 }
 
+- (CGSize)canvasSize {
+    return CGSizeMake(_live2DModel->getCanvasWidth(), _live2DModel->getCanvasHeight());
+}
+
 @end
