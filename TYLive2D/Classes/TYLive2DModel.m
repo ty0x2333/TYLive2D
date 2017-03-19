@@ -8,10 +8,13 @@
 
 #import "TYLive2DModel.h"
 
-static NSString * const TYLive2DModelTexturesKey = @"ModelTextures";
-static NSString * const TYLive2DModelNameKey = @"ModelName";
-static NSString * const TYLive2DModelParamKey = @"ModelParam";
-static NSString * const TYLive2DModelPartKey = @"ModelPart";
+NSString * const TYLive2DModelTexturesKey = @"ModelTextures";
+NSString * const TYLive2DModelNameKey = @"ModelName";
+NSString * const TYLive2DModelParamKey = @"ModelParam";
+NSString * const TYLive2DModelPartKey = @"ModelPart";
+
+NSString * const TYLive2DModelMaxKey = @"Max";
+NSString * const TYLive2DModelMinKey = @"Min";
 
 @implementation TYLive2DModel
 
@@ -28,10 +31,24 @@ static NSString * const TYLive2DModelPartKey = @"ModelPart";
         
         _modelPath = [basePath stringByAppendingPathComponent:infos[TYLive2DModelNameKey]];
         
-        _parameters = [infos[TYLive2DModelParamKey] allKeys];
+        NSMutableArray *params = [NSMutableArray arrayWithCapacity:[infos[TYLive2DModelParamKey] count]];
+        [infos[TYLive2DModelParamKey] enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSDictionary *obj, BOOL * _Nonnull stop) {
+            TYLive2DParameterModel *param = [[TYLive2DParameterModel alloc] init];
+            param.name = key;
+            param.min = [obj[TYLive2DModelMinKey] floatValue];
+            param.max = [obj[TYLive2DModelMaxKey] floatValue];
+            
+            [params addObject:param];
+        }];
+        _parameters = [params copy];
         _parts = infos[TYLive2DModelPartKey];
     }
     return self;
 }
+
+@end
+
+
+@implementation TYLive2DParameterModel
 
 @end
