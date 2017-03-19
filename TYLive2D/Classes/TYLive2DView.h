@@ -25,4 +25,9 @@
 - (void)setParamsWithDictionary:(NSDictionary<NSString *, NSNumber *> *)params;
 - (void)setPartsWithDictionary:(NSDictionary<NSString *, NSNumber *> *)parts;
 
+- (void)startAnimation:(void (^)(SInt64 userTime))animation;
+
+@property (nonatomic) NSInteger preferredFramesPerSecond;
+@property (nonatomic, getter=isPaused) BOOL paused;
+
 @end

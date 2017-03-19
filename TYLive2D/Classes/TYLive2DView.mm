@@ -25,6 +25,9 @@
 @property (nonatomic, strong) TYLive2DModel *model;
 
 @property (nonatomic, strong) GLKView *contentView;
+@property (nonatomic, strong) CADisplayLink *displayLink;
+
+@property (nonatomic, copy) void (^animation)(SInt64 userTime);
 
 @end
 
@@ -42,6 +45,11 @@
         _contentView.context = _context;
         _contentView.drawableDepthFormat = GLKViewDrawableDepthFormat24;
         [self addSubview:_contentView];
+        
+        self.preferredFramesPerSecond = 30;
+        self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(drawView)];
+        self.displayLink.frameInterval = MAX(1, 60.0f / _preferredFramesPerSecond);
+        [self.displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
     }
     return self;
 }
@@ -50,6 +58,8 @@
     live2d::Live2D::init();
     
     _live2DModel = live2d::Live2DModelIPhone::loadModel([model.modelPath UTF8String]);
+    
+    _model = model;
     
     for (NSInteger i = 0; i < model.texturePaths.count; ++i) {
         
@@ -60,9 +70,31 @@
     }
 }
 
+- (void)startAnimation:(void (^)(SInt64 userTime))animation {
+    self.animation = animation;
+}
+
 - (void)layoutSubviews {
     [super layoutSubviews];
     _contentView.frame = self.bounds;
+}
+
+#pragma mark -
+- (void)setPreferredFramesPerSecond:(NSInteger)preferredFramesPerSecond {
+    _preferredFramesPerSecond = preferredFramesPerSecond;
+    self.displayLink.frameInterval = MAX(1, 60.0f / _preferredFramesPerSecond);
+}
+
+- (BOOL)isPaused {
+    return self.displayLink.paused;
+}
+
+- (void)setPaused:(BOOL)paused {
+    self.displayLink.paused = paused;
+}
+
+- (void)drawView {
+    [self.contentView display];
 }
 
 #pragma mark - GLKViewDelegate
@@ -71,10 +103,16 @@
     glClearColor(1.0, 1.0, 1.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    glLoadIdentity();
-    float modelWidth = _live2DModel->getCanvasWidth();
-    glOrthof(0, modelWidth, modelWidth * CGRectGetHeight(self.bounds) / CGRectGetWidth(self.bounds), 0, 0.5f, -0.5f);
+    CGFloat modelWidth = _live2DModel->getCanvasWidth();
+    CGFloat modelHeight = _live2DModel->getCanvasHeight();
     
+    glLoadIdentity();
+    
+    glOrthof(0, modelWidth, modelHeight, 0, 0.5f, -0.5f);
+    
+    if (_animation) {
+        _animation(live2d::UtSystem::getUserTimeMSec());
+    }
     self.live2DModel->update();
     self.live2DModel->draw();
 }
