@@ -22,4 +22,7 @@
 
 - (CGFloat)valueForPart:(NSString *)part;
 
+- (void)setParamsWithDictionary:(NSDictionary<NSString *, NSNumber *> *)params;
+- (void)setPartsWithDictionary:(NSDictionary<NSString *, NSNumber *> *)parts;
+
 @end

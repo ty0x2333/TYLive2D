@@ -117,10 +117,10 @@
 
 #pragma mark - Setter / Getter
 
-- (void)setValue:(double)value forParam:(NSString *)param {
+- (void)setValue:(CGFloat)value forParam:(NSString *)param {
     for (TYLive2DParameterModel *p in self.model.parameters) {
         if ([p.name isEqualToString:param]) {
-            double v = value;
+            CGFloat v = value;
             if (value < p.min) {
                 v = p.min;
             } else if (value > p.max) {
@@ -141,6 +141,18 @@
 
 - (CGFloat)valueForPart:(NSString *)part {
     return self.live2DModel->getPartsOpacity(part.UTF8String);
+}
+
+- (void)setParamsWithDictionary:(NSDictionary<NSString *, NSNumber *> *)params {
+    [params enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSNumber * _Nonnull obj, BOOL * _Nonnull stop) {
+        [self setValue:[obj floatValue] forParam:key];
+    }];
+}
+
+- (void)setPartsWithDictionary:(NSDictionary<NSString *, NSNumber *> *)parts {
+    [parts enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, NSNumber * _Nonnull obj, BOOL * _Nonnull stop) {
+        [self setValue:[obj floatValue] forPart:key];
+    }];
 }
 
 @end
