@@ -26,6 +26,7 @@
 @property (nonatomic, assign) GLuint defaultFramebuffer;
 @property (nonatomic, assign) GLuint colorRenderbuffer;
 @property (nonatomic, assign) live2d::Live2DModelIPhone *live2DModel;
+@property (nonatomic, strong) TYLive2DModel *model;
 
 @end
 
@@ -117,7 +118,17 @@
 #pragma mark - Setter / Getter
 
 - (void)setValue:(double)value forParam:(NSString *)param {
-    self.live2DModel->setParamFloat(param.UTF8String, value);
+    for (TYLive2DParameterModel *p in self.model.parameters) {
+        if ([p.name isEqualToString:param]) {
+            double v = value;
+            if (value < p.min) {
+                v = p.min;
+            } else if (value > p.max) {
+                v = p.max;
+            }
+            self.live2DModel->setParamFloat(param.UTF8String, v);
+        }
+    }
 }
 
 - (CGFloat)valueForParam:(NSString *)param {
