@@ -20,7 +20,6 @@ NSString * const TYLive2DModelMinKey = @"Min";
 
 - (instancetype)initWithPlistPath:(NSString *)plistPath {
     if (self = [super init]) {
-        NSString *bundlePath = [NSBundle mainBundle].bundlePath;
         NSDictionary *infos = [NSDictionary dictionaryWithContentsOfFile:plistPath];
         NSString *basePath = [plistPath stringByReplacingOccurrencesOfString:plistPath.lastPathComponent withString:@""];
         NSMutableArray *texturePaths = [NSMutableArray arrayWithCapacity:0];
