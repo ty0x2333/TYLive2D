@@ -5,6 +5,8 @@
 [![License](https://img.shields.io/cocoapods/l/TYLive2D.svg?style=flat)](http://cocoapods.org/pods/TYLive2D)
 [![Platform](https://img.shields.io/cocoapods/p/TYLive2D.svg?style=flat)](http://cocoapods.org/pods/TYLive2D)
 
+Inspiration from [DaidoujiChen/DaiLive2DPlayground](https://github.com/DaidoujiChen/DaiLive2DPlayground)
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
