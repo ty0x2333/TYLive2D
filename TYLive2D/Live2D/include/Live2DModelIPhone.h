@@ -14,8 +14,8 @@
 
 
 #include "ALive2DModel.h"
-#include "model/ModelImpl.h"
-#include "graphics/DrawParam_OpenGLES1.h"
+#include "ModelImpl.h"
+#include "DrawParam_OpenGLES1.h"
 
 //--------- LIVE2D NAMESPACE ------------
 namespace live2d 

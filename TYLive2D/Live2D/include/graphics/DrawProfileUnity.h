@@ -8,7 +8,7 @@
 
 #ifndef __Live2D__DrawProfileUnity__
 #define __Live2D__DrawProfileUnity__
-#include "../Live2D.h"
+#include "Live2D.h"
 #ifdef L2D_BUILD_FOR_UNITY
 
 

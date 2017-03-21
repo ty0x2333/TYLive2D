@@ -10,7 +10,7 @@
 
 #ifndef __SKIP_DOC__
 
-#include "../../Live2D.h"
+#include "Live2D.h"
 
 #ifndef NULL
 #  define NULL    0

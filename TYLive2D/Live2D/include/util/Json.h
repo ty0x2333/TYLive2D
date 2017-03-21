@@ -18,11 +18,11 @@
 #define __LIVE2D_JSON_H__
 
 #include "stdio.h"
-#include "../Live2D.h"
-#include "../memory/LDObject.h"
-#include "../type/LDVector.h"
-#include "../type/LDMap.h"
-#include "../type/LDString.h"
+#include "Live2D.h"
+#include "LDObject.h"
+#include "LDVector.h"
+#include "LDMap.h"
+#include "LDString.h"
 
 
 //------------ LIVE2D NAMESPACE ------------

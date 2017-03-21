@@ -11,10 +11,10 @@
 
 #ifndef __SKIP_DOC__
 
-#include "../../Live2D.h"
-#include "../LDUnmanagedObject.h"
-#include "../APageHeader.h"
-#include "../AMemoryHolder.h"
+#include "Live2D.h"
+#include "LDUnmanagedObject.h"
+#include "APageHeader.h"
+#include "AMemoryHolder.h"
 
 
 //--------- LIVE2D NAMESPACE ------------

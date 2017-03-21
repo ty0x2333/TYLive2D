@@ -8,11 +8,11 @@
 #define __LIVE2D_DRAWPARAM_H__
 
 
-#include "../Live2D.h"
-#include "../memory/LDObject.h"
-#include "../type/LDVector.h"
+#include "Live2D.h"
+#include "LDObject.h"
+#include "LDVector.h"
 
-#include "../id/DrawDataID.h"
+#include "DrawDataID.h"
 
 //------------ LIVE2D NAMESPACE ------------
 namespace live2d

@@ -32,14 +32,15 @@ Pod::Spec.new do |s|
 
   s.source_files = ['TYLive2D/Classes/**/*', 'TYLive2D/Live2D/include/**/*']
 
-
-  s.preserve_paths = 'TYLive2D/Live2D/lib/**/*'
+  s.preserve_paths = ['TYLive2D/Live2D/lib/**/*', 'TYLive2D/Live2D/include/**/*.h']
+  s.private_header_files = 'TYLive2D/Live2D/include/**/*.h'
   s.xcconfig = {
     'LIBRARY_SEARCH_PATHS' => '${PODS_ROOT}/TYLive2D/TYLive2D/Live2D/lib/$CONFIGURATION$EFFECTIVE_PLATFORM_NAME',
     'OTHER_LDFLAGS' => '-l"Live2D"',
-    'GCC_PREPROCESSOR_DEFINITIONS' => 'L2D_TARGET_IPHONE'
+    'GCC_PREPROCESSOR_DEFINITIONS' => 'L2D_TARGET_IPHONE',
+    'ENABLE_BITCODE' => 'NO'
   }
-  s.libraries = 'stdc++'
+  s.libraries = 'c++'
 
   s.frameworks = 'GLKit', 'OpenGLES'
 end

@@ -8,9 +8,9 @@
 #define __LIVE2D_A_MOTION_H__
 
 
-#include "../memory/LDObject.h"
+#include "LDObject.h"
 
-#include "../ALive2DModel.h"
+#include "ALive2DModel.h"
 
 //--------- LIVE2D NAMESPACE ------------
 namespace live2d 

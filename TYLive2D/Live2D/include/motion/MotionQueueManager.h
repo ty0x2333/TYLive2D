@@ -8,10 +8,10 @@
 #define __LIVE2D_MOTION_QUEUE_MANAGER_H__
 
 
-#include "../memory/LDObject.h"
-#include "../ALive2DModel.h"
+#include "LDObject.h"
+#include "ALive2DModel.h"
 
-#include "../type/LDVector.h"
+#include "LDVector.h"
 #include "AMotion.h"
 
 //--------- LIVE2D NAMESPACE ------------

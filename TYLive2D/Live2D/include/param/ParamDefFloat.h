@@ -8,8 +8,8 @@
 #define __LIVE2D_PARAM_DEF_FLOAT_H__
 
 
-#include "../id/ParamID.h"
-#include "../io/ISerializableV2.h"
+#include "ParamID.h"
+#include "ISerializableV2.h"
 
 //--------- LIVE2D NAMESPACE ------------
 namespace live2d 

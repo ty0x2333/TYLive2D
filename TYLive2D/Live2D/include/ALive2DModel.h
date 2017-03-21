@@ -8,13 +8,13 @@
 #define __LIVE2D_ALIVE_2D_MODE_H__
 
 
-#include "type/LDVector.h"
+#include "LDVector.h"
 #include "Live2D.h"
-#include "memory/LDObject.h"
+#include "LDObject.h"
 #include "ModelContext.h"
-#include "id/ParamID.h"
-#include "id/DrawDataID.h"
-#include "id/PartsDataID.h"
+#include "ParamID.h"
+#include "DrawDataID.h"
+#include "PartsDataID.h"
 
 //------------ LIVE2D NAMESPACE ------------
 namespace live2d

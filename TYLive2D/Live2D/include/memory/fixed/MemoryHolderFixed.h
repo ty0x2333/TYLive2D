@@ -12,8 +12,8 @@
 
 #ifndef __SKIP_DOC__
 
-#include "../LDObject.h"
-#include "../AMemoryHolder.h"
+#include "LDObject.h"
+#include "AMemoryHolder.h"
 
 //--------- LIVE2D NAMESPACE ------------
 namespace live2d 

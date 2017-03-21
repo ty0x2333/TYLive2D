@@ -8,7 +8,7 @@
 #define __LIVE2D_PARAM_ID_H__
 
 
-#include "../Live2D.h"
+#include "Live2D.h"
 #include "ID.h"
 
 //------------ LIVE2D NAMESPACE ------------

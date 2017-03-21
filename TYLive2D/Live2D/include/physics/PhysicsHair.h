@@ -9,9 +9,9 @@
 #define __LIVE2D_PHYSICS_HAIR_H__
 
 
-#include "../Live2D.h"
-#include "../memory/LDObject.h"
-#include "../ALive2DModel.h"
+#include "Live2D.h"
+#include "LDObject.h"
+#include "ALive2DModel.h"
 #define _USE_MATH_DEFINES
 
 #include	"../util/UtMath.h"

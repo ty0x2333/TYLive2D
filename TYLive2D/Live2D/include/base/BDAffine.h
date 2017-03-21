@@ -10,7 +10,7 @@
 
 #ifndef __SKIP_DOC__
 
-#include "../param/PivotManager.h"
+#include "param/PivotManager.h"
 #include "IBaseData.h"
 #include "IBaseContext.h"
 

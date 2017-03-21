@@ -10,8 +10,8 @@
 
 #ifndef __SKIP_DOC__
 
-#include "../Live2D.h"
-#include "../memory/LDObject.h"
+#include "Live2D.h"
+#include "LDObject.h"
 
 //------------ LIVE2D NAMESPACE ------------
 namespace live2d

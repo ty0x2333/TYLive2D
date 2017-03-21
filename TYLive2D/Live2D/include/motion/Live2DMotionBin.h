@@ -8,9 +8,9 @@
 #pragma once
 
 
-#include "../Live2D.h"
-#include "../ALive2DModel.h"
-#include "../type/LDVector.h"
+#include "Live2D.h"
+#include "ALive2DModel.h"
+#include "LDVector.h"
 #include <vector>
 #include "AMotion.h"
 

@@ -10,9 +10,9 @@
 
 #ifndef __SKIP_DOC__
 
-#include "../Live2D.h"
+#include "Live2D.h"
 #include "IDrawData.h"
-#include "../param/PivotManager.h"
+#include "param/PivotManager.h"
 #include "IDrawContext.h"
 
 #ifdef L2D_TARGET_D3D

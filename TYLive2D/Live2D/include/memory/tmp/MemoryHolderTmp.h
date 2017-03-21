@@ -13,11 +13,11 @@
 
 #ifndef __SKIP_DOC__
 
-#include "../../Live2D.h"
-#include "../LDObject.h"
-#include "../LDUnmanagedObject.h"
-#include "../AMemoryHolder.h"
-#include "../APageHeader.h"
+#include "Live2D.h"
+#include "LDObject.h"
+#include "LDUnmanagedObject.h"
+#include "AMemoryHolder.h"
+#include "APageHeader.h"
 #include "MHBin.h"
 
 //--------- LIVE2D NAMESPACE ------------

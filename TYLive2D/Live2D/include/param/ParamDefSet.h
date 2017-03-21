@@ -9,7 +9,7 @@
 
 
 
-#include "../io/ISerializableV2.h"
+#include "ISerializableV2.h"
 #include "ParamDefFloat.h"
 
 //--------- LIVE2D NAMESPACE ------------

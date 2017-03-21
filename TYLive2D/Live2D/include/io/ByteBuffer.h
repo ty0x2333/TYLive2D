@@ -11,9 +11,9 @@
 #ifndef __SKIP_DOC__
 
 
-#include "../Live2D.h"
-#include "../type/LDVector.h"
-#include "../memory/LDObject.h"
+#include "Live2D.h"
+#include "LDVector.h"
+#include "LDObject.h"
 #include "RefString.h"
 
 #define __LIVE2D_BYTE_BUFFER_DEBUG___

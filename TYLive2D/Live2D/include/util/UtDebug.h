@@ -9,8 +9,8 @@
 #define __LIVE2D_UTDEBUG_H__
 
 
-#include "../Live2D.h"
-#include "../memory/LDObject.h"
+#include "Live2D.h"
+#include "LDObject.h"
 
 #ifndef NULL
 #  define NULL    0

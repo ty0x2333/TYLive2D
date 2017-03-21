@@ -221,7 +221,7 @@ namespace live2d
     class LDAllocator;   
 }
 
-#include "memory/UtMemory.h"
+#include "UtMemory.h"
 
 
 //--------- LIVE2D NAMESPACE ------------

@@ -9,7 +9,7 @@
 #define __LIVE2D_UTFILE_H__
 
 
-#include "../type/LDVector.h"
+#include "LDVector.h"
 
 
 //--------- LIVE2D NAMESPACE ------------

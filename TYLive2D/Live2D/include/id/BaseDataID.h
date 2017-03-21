@@ -10,8 +10,8 @@
 #define __LIVE2D_BASE_DATA_ID_H__
 
 
-#include "../Live2D.h"
-#include "../type/LDVector.h"
+#include "Live2D.h"
+#include "LDVector.h"
 #include "ID.h"
 
 //------------ LIVE2D NAMESPACE ------------

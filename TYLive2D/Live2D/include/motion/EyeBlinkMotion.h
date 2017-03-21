@@ -8,11 +8,11 @@
 #define __LIVE2D_EYE_BLINK_MOTION_H__
 
 
-#include "../memory/LDObject.h"
+#include "LDObject.h"
 
-#include "../type/LDVector.h"
+#include "LDVector.h"
 
-#include "../ALive2DModel.h"
+#include "ALive2DModel.h"
 
 
 //--------- LIVE2D NAMESPACE ------------

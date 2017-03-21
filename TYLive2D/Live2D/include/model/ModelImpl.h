@@ -8,7 +8,7 @@
 #define __LIVE2D_MODEL_IMPL_H__
 
 #include <stdio.h>
-#include "../io/ISerializableV2.h"
+#include "ISerializableV2.h"
 
 //------------ LIVE2D NAMESPACE ------------
 namespace live2d

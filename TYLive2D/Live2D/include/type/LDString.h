@@ -9,8 +9,8 @@
 #define __LIVE2D_LD_STRING_H__
 
 
-#include "../memory/LDObject.h"
-#include "../io/RefString.h"
+#include "LDObject.h"
+#include "RefString.h"
 # include <string.h>
 
 // 旧版との互換性維持のための宣言。今後使用中止予定

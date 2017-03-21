@@ -12,9 +12,9 @@
 
 
 #include <stdio.h>
-#include "../Live2D.h"
-#include "../io/ISerializableV2.h"
-#include "../model/PartsData.h"
+#include "Live2D.h"
+#include "ISerializableV2.h"
+#include "PartsData.h"
 
 //------------ LIVE2D NAMESPACE ------------
 namespace live2d

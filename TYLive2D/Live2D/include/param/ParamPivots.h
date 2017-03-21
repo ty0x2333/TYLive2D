@@ -22,10 +22,10 @@
 #ifndef __SKIP_DOC__
 
 
-#include "../Live2D.h"
-#include "../type/LDVector.h"
-#include "../ModelContext.h"
-#include "../io/ISerializableV2.h"
+#include "Live2D.h"
+#include "LDVector.h"
+#include "ModelContext.h"
+#include "ISerializableV2.h"
 
 
 //------------ LIVE2D NAMESPACE ------------

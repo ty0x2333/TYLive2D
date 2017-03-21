@@ -10,14 +10,14 @@
 
 #include <new>
 
-#include "../Live2D.h"
-#include "../memory/UtMemory.h"
+#include "Live2D.h"
+#include "UtMemory.h"
 
-#include "../util/UtDebug.h"
+#include "UtDebug.h"
 
-#include "../memory/LDObject.h"
-#include "../memory/MemoryParam.h"
-#include "../type/LDString.h"
+#include "LDObject.h"
+#include "MemoryParam.h"
+#include "LDString.h"
 
 
 #ifndef NULL

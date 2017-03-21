@@ -14,11 +14,11 @@
 
 #define _USE_MATH_DEFINES
 #include <math.h>
-#include "../Live2D.h"
+#include "Live2D.h"
 
 // ------------  SIN/COSの高速化 ------------
 #ifdef L2D_TARGET_PSP
-#include "../graphics/DrawParam_PSP.h"
+#include "DrawParam_PSP.h"
 #elif 0
 // --- 高速処理
 

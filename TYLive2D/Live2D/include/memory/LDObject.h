@@ -8,7 +8,7 @@
 #ifndef __LIVE2D_LDOBJECT_H__
 #define __LIVE2D_LDOBJECT_H__
 
-#include "../Live2D.h"
+#include "Live2D.h"
 
 
 namespace live2d { //--------- LIVE2D NAMESPACE ------------

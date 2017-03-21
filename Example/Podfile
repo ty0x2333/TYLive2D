@@ -1,4 +1,5 @@
-platform :ios,'7.0'
+# platform :ios,'7.0'
+use_frameworks!
 
 target 'TYLive2D_Example' do
   pod 'TYLive2D', :path => '../'

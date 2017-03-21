@@ -13,7 +13,7 @@
 
 #ifndef __SKIP_DOC__
 
-#include "../memory/LDObject.h"
+#include "LDObject.h"
 
 //------------ LIVE2D NAMESPACE ------------
 namespace live2d

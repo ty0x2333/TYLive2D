@@ -16,8 +16,8 @@
 #ifndef __SKIP_DOC__
 
 #include "LDUnmanagedObject.h"
-#include "fixed/MemoryHolderFixed.h"
-#include "tmp/MemoryHolderTmp.h"
+#include "MemoryHolderFixed.h"
+#include "MemoryHolderTmp.h"
 #include "LDAllocator.h"
 
 //--------- LIVE2D NAMESPACE ------------

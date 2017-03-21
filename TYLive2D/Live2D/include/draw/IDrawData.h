@@ -11,9 +11,9 @@
 
 #ifndef __SKIP_DOC__
 
-#include "../Live2D.h"
-#include "../io/ISerializableV2.h"
-#include "../id/BaseDataID.h"
+#include "Live2D.h"
+#include "ISerializableV2.h"
+#include "BaseDataID.h"
 #include "IDrawContext.h"
 #include <stdio.h>
 

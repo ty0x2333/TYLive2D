@@ -15,7 +15,7 @@
 #ifndef __LIVE2D_LDALLOCATOR_H__
 #define __LIVE2D_LDALLOCATOR_H__
 
-//#include "../Live2D.h"
+//#include "Live2D.h"
 
 //--------- LIVE2D NAMESPACE ------------
 namespace live2d { 

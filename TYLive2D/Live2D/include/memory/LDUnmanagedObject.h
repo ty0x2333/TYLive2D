@@ -7,7 +7,7 @@
 #pragma once
 
 
-#include "../Live2D.h"
+#include "Live2D.h"
 
 
 namespace live2d { //--------- LIVE2D NAMESPACE ------------

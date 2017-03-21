@@ -8,9 +8,9 @@
 #define __LIVE2D_LDMAP_H__
 
 
-#include "../memory/LDObject.h"
+#include "LDObject.h"
 #include "LDString.h"
-#include "../util/UtDebug.h"
+#include "UtDebug.h"
 
 #define l2d_map		live2d::LDMap
 

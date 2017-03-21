@@ -12,8 +12,8 @@
 
 #ifndef __SKIP_DOC__
 
-#include "../Live2D.h"
-#include "../type/LDVector.h"
+#include "Live2D.h"
+#include "LDVector.h"
 
 
 

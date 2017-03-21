@@ -9,12 +9,12 @@
 
 
 #include "Live2D.h"
-#include "memory/LDObject.h"
-#include "type/LDVector.h"
+#include "LDObject.h"
+#include "LDVector.h"
 #include "DEF.h"
 
 #if L2D_VERBOSE
-#include "util/UtDebug.h"
+#include "UtDebug.h"
 #endif
 
 //------------ LIVE2D NAMESPACE ------------

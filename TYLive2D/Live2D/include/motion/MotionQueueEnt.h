@@ -10,10 +10,10 @@
 
 #ifndef __SKIP_DOC__
 
-#include "../memory/LDObject.h"
-#include "../ALive2DModel.h"
+#include "LDObject.h"
+#include "ALive2DModel.h"
 
-#include "../type/LDVector.h"
+#include "LDVector.h"
 
 
 //--------- LIVE2D NAMESPACE ------------

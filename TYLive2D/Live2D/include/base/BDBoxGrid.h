@@ -12,8 +12,8 @@
 
 #ifndef __SKIP_DOC__
 
-#include "../Live2D.h"
-#include "../param/PivotManager.h"
+#include "Live2D.h"
+#include "param/PivotManager.h"
 #include "IBaseData.h"
 #include "IBaseContext.h"
 

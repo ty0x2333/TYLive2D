@@ -14,7 +14,7 @@
 
 
 #include "PhysicsHair.h"
-#include "../memory/LDObject.h"
+#include "LDObject.h"
 
 
 //--------- LIVE2D NAMESPACE ------------

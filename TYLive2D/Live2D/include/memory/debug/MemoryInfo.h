@@ -9,7 +9,7 @@
 
 #ifndef __SKIP_DOC__
 
-#include "../../Live2D.h"
+#include "Live2D.h"
 
 
 //--------- LIVE2D NAMESPACE ------------

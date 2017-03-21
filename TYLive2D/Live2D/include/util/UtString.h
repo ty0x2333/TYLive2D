@@ -12,7 +12,7 @@
 
 #ifndef __SKIP_DOC__
 
-#include "../type/LDVector.h"
+#include "LDVector.h"
 
 
 

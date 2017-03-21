@@ -8,9 +8,9 @@
 #define __LIVE2D_PARTS_DATA_H__
 
 
-#include "../Live2D.h"
+#include "Live2D.h"
 
-#include "../io/ISerializableV2.h"
+#include "ISerializableV2.h"
 
 
 //------------ LIVE2D NAMESPACE ------------

@@ -8,8 +8,8 @@
 #define __LIVE2D_ID_H__
 
 
-#include "../io/ISerializableV2.h"
-#include "../memory/LDObject.h"
+#include "ISerializableV2.h"
+#include "LDObject.h"
 
 //--------- LIVE2D NAMESPACE ------------
 namespace live2d
