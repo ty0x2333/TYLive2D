@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "TYLive2D.h"
 #import "TYLive2DModel.h"
 #import "TYLive2DView.h"
 

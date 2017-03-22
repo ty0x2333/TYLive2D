@@ -9,12 +9,14 @@
 #import "TYViewController.h"
 #import <TYLive2D/TYLive2DModel.h>
 #import <TYLive2D/TYLive2DView.h>
+#import <TYLive2D/TYLive2D.h>
 
 @interface TYViewController ()
 
 @property (nonatomic, strong) TYLive2DView *live2DView;
 @property (nonatomic, assign) BOOL isEyeClosing;
 @property (nonatomic, assign) CGFloat eyeSpeed;
+@property (nonatomic, strong) UILabel *versionLabel;
 
 @end
 
@@ -49,8 +51,7 @@
         if ((sin(globalTime) + 1.0) >= 1.9 && !self.isEyeClosing) {
             self.isEyeClosing = YES;
             self.eyeSpeed = (arc4random() % 200 + 100);
-        }
-        else if (self.isEyeClosing) {
+        } else if (self.isEyeClosing) {
             double eyeTime = userTime / self.eyeSpeed;
             [_live2DView setValue:sin(eyeTime) + 1.0 forParam:@"PARAM_EYE_L_OPEN"];
             [_live2DView setValue:sin(eyeTime) + 1.0 forParam:@"PARAM_EYE_R_OPEN"];
@@ -60,6 +61,10 @@
         }
 
     }];
+    
+    _versionLabel = [[UILabel alloc] init];
+    _versionLabel.text = [NSString stringWithFormat:@"Live2D version: %@", [TYLive2D live2DVersion]];
+    [self.view addSubview:_versionLabel];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -78,6 +83,10 @@
         width = height * modelWidth / modelHeight;
     }
     _live2DView.frame = CGRectMake((fullWidth - width) / 2.f, (fullHeight - height) / 2.f, width, height);
+    
+    [_versionLabel sizeToFit];
+    CGSize labelSize = _versionLabel.bounds.size;
+    _versionLabel.frame = CGRectMake((fullWidth - labelSize.width) / 2.f, fullHeight - labelSize.width / 2.f, labelSize.width, labelSize.height);
 }
 
 @end
