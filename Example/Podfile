@@ -1,5 +1,8 @@
 # platform :ios,'7.0'
 use_frameworks!
+# for development https://github.com/CocoaPods/CocoaPods/pull/5254
+install! 'cocoapods',
+  :share_schemes_for_development_pods => true
 
 target 'TYLive2D_Example' do
   pod 'TYLive2D', :path => '../'

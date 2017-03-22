@@ -4,6 +4,7 @@
 [![Version](https://img.shields.io/cocoapods/v/TYLive2D.svg?style=flat)](http://cocoapods.org/pods/TYLive2D)
 [![License](https://img.shields.io/cocoapods/l/TYLive2D.svg?style=flat)](http://cocoapods.org/pods/TYLive2D)
 [![Platform](https://img.shields.io/cocoapods/p/TYLive2D.svg?style=flat)](http://cocoapods.org/pods/TYLive2D)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 Inspiration from [DaidoujiChen/DaiLive2DPlayground](https://github.com/DaidoujiChen/DaiLive2DPlayground)
 
@@ -11,7 +12,7 @@ Inspiration from [DaidoujiChen/DaiLive2DPlayground](https://github.com/DaidoujiC
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-![MainScreen](screenshots/iPhone6-MainScreen.png)
+![MainScreen](screenshot/iPhone6-MainScreen.png)
 
 ## Installation
 
