@@ -21,7 +21,7 @@ languages([
 # scheme "SchemeName"
 
 # Where should the resulting screenshots be stored?
-# output_directory "./screenshots"
+output_directory "./screenshots-temp"
 
 clear_previous_screenshots true 
 # creating new ones
