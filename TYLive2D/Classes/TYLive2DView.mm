@@ -61,7 +61,7 @@
     
     _model = model;
     
-    for (NSInteger i = 0; i < model.texturePaths.count; ++i) {
+    for (int i = 0; i < model.texturePaths.count; ++i) {
         
         GLKTextureInfo *textureInfo = [GLKTextureLoader textureWithContentsOfFile:model.texturePaths[i] options:@{ GLKTextureLoaderApplyPremultiplication: @(YES), GLKTextureLoaderGenerateMipmaps: @(YES) } error:nil];
         int textureNumber = textureInfo.name;
