@@ -12,7 +12,7 @@ Inspiration from [DaidoujiChen/DaiLive2DPlayground](https://github.com/DaidoujiC
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-![MainScreen](screenshot/iPhone6-MainScreen.png)
+![MainScreen](screenshots/iPhone6-MainScreen.png)
 
 ## Installation
 
