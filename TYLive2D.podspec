@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
 #                        DESC
 
   s.homepage         = 'https://github.com/luckytianyiyan/TYLive2D'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.screenshots      = 'https://github.com/luckytianyiyan/TYLive2D/blob/master/screenshots/iPhone6-MainScreen.png'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'luckytianyiyan' => 'luckytianyiyan@gmail.com' }
   s.source           = { :git => 'https://github.com/luckytianyiyan/TYLive2D.git', :tag => s.version.to_s }
@@ -34,7 +34,7 @@ Pod::Spec.new do |s|
 
   s.preserve_paths = 'TYLive2D/Live2D/include/**/*.h'
   s.private_header_files = 'TYLive2D/Live2D/include/**/*.h'
-  
+
   s.vendored_library = 'TYLive2D/Live2D/lib/*'
 
   s.xcconfig = {
