@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
 #                        DESC
 
   s.homepage         = 'https://github.com/luckytianyiyan/TYLive2D'
-  s.screenshots      = 'https://github.com/luckytianyiyan/TYLive2D/blob/master/screenshots/iPhone6-MainScreen.png'
+  s.screenshots      = 'https://github.com/luckytianyiyan/TYLive2D/blob/master/screenshots/iPhone6-MainScreen.png?raw=true'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'luckytianyiyan' => 'luckytianyiyan@gmail.com' }
   s.source           = { :git => 'https://github.com/luckytianyiyan/TYLive2D.git', :tag => s.version.to_s }
