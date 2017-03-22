@@ -38,6 +38,26 @@
                ReferencedContainer = "container:TYLive2D.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "195387991E818CB5003CE27A"
+               BuildableName = "TYLive2D_ExampleUITests.xctest"
+               BlueprintName = "TYLive2D_ExampleUITests"
+               ReferencedContainer = "container:TYLive2D.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "195387A71E818D1A003CE27A"
+               BuildableName = "TYLive2D_UITests.xctest"
+               BlueprintName = "TYLive2D_UITests"
+               ReferencedContainer = "container:TYLive2D.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

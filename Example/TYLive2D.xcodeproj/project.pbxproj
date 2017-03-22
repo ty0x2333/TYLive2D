@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		195387AB1E818D1B003CE27A /* TYLive2D_UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 195387AA1E818D1B003CE27A /* TYLive2D_UITests.m */; };
+		195387B91E821CD7003CE27A /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195387B81E821CD7003CE27A /* SnapshotHelper.swift */; };
 		19C4E2201E604FFF00E8D6A5 /* back_class_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 19C4E2191E604FFF00E8D6A5 /* back_class_normal.png */; };
 		19C4E2211E604FFF00E8D6A5 /* Haru in Resources */ = {isa = PBXBuildFile; fileRef = 19C4E21A1E604FFF00E8D6A5 /* Haru */; };
 		19C4E2221E604FFF00E8D6A5 /* HaruFullPack in Resources */ = {isa = PBXBuildFile; fileRef = 19C4E21B1E604FFF00E8D6A5 /* HaruFullPack */; };
@@ -38,6 +40,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		195387AD1E818D1B003CE27A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6003F582195388D10070C39A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6003F589195388D20070C39A;
+			remoteInfo = TYLive2D_Example;
+		};
 		6003F5B3195388D20070C39A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6003F582195388D10070C39A /* Project object */;
@@ -49,6 +58,11 @@
 
 /* Begin PBXFileReference section */
 		0BB39F0D39863626536C2A0E /* Pods-TYLive2D_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TYLive2D_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TYLive2D_Tests/Pods-TYLive2D_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		195387A81E818D1A003CE27A /* TYLive2D_UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TYLive2D_UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		195387AA1E818D1B003CE27A /* TYLive2D_UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYLive2D_UITests.m; sourceTree = "<group>"; };
+		195387AC1E818D1B003CE27A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		195387B71E821CD7003CE27A /* TYLive2D_UITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TYLive2D_UITests-Bridging-Header.h"; sourceTree = "<group>"; };
+		195387B81E821CD7003CE27A /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		19C4E1F21E604A0900E8D6A5 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 		19C4E2191E604FFF00E8D6A5 /* back_class_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_class_normal.png; sourceTree = "<group>"; };
 		19C4E21A1E604FFF00E8D6A5 /* Haru */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Haru; sourceTree = "<group>"; };
@@ -92,6 +106,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		195387A51E818D1A003CE27A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6003F587195388D20070C39A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -117,6 +138,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		195387A91E818D1B003CE27A /* TYLive2D_UITests */ = {
+			isa = PBXGroup;
+			children = (
+				195387B21E821BFD003CE27A /* fastlane */,
+				195387AA1E818D1B003CE27A /* TYLive2D_UITests.m */,
+				195387AC1E818D1B003CE27A /* Info.plist */,
+			);
+			path = TYLive2D_UITests;
+			sourceTree = "<group>";
+		};
+		195387B21E821BFD003CE27A /* fastlane */ = {
+			isa = PBXGroup;
+			children = (
+				195387B81E821CD7003CE27A /* SnapshotHelper.swift */,
+				195387B71E821CD7003CE27A /* TYLive2D_UITests-Bridging-Header.h */,
+			);
+			path = fastlane;
+			sourceTree = "<group>";
+		};
 		19C4E1E41E602B0300E8D6A5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +189,7 @@
 				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
 				6003F593195388D20070C39A /* Example for TYLive2D */,
 				6003F5B5195388D20070C39A /* Tests */,
+				195387A91E818D1B003CE27A /* TYLive2D_UITests */,
 				6003F58C195388D20070C39A /* Frameworks */,
 				6003F58B195388D20070C39A /* Products */,
 				778000171504D366A32AE481 /* Pods */,
@@ -160,6 +201,7 @@
 			children = (
 				6003F58A195388D20070C39A /* TYLive2D_Example.app */,
 				6003F5AE195388D20070C39A /* TYLive2D_Tests.xctest */,
+				195387A81E818D1A003CE27A /* TYLive2D_UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -248,6 +290,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		195387A71E818D1A003CE27A /* TYLive2D_UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 195387B11E818D1B003CE27A /* Build configuration list for PBXNativeTarget "TYLive2D_UITests" */;
+			buildPhases = (
+				195387A41E818D1A003CE27A /* Sources */,
+				195387A51E818D1A003CE27A /* Frameworks */,
+				195387A61E818D1A003CE27A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				195387AE1E818D1B003CE27A /* PBXTargetDependency */,
+			);
+			name = TYLive2D_UITests;
+			productName = TYLive2D_UITests;
+			productReference = 195387A81E818D1A003CE27A /* TYLive2D_UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		6003F589195388D20070C39A /* TYLive2D_Example */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "TYLive2D_Example" */;
@@ -299,6 +359,13 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = luckytianyiyan;
 				TargetAttributes = {
+					195387A71E818D1A003CE27A = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 9KYD7S7AZY;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 6003F589195388D20070C39A;
+					};
 					6003F589195388D20070C39A = {
 						DevelopmentTeam = E67MQJRFZ7;
 					};
@@ -322,11 +389,19 @@
 			targets = (
 				6003F589195388D20070C39A /* TYLive2D_Example */,
 				6003F5AD195388D20070C39A /* TYLive2D_Tests */,
+				195387A71E818D1A003CE27A /* TYLive2D_UITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		195387A61E818D1A003CE27A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6003F588195388D20070C39A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -453,6 +528,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		195387A41E818D1A003CE27A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				195387AB1E818D1B003CE27A /* TYLive2D_UITests.m in Sources */,
+				195387B91E821CD7003CE27A /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6003F586195388D20070C39A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -474,6 +558,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		195387AE1E818D1B003CE27A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6003F589195388D20070C39A /* TYLive2D_Example */;
+			targetProxy = 195387AD1E818D1B003CE27A /* PBXContainerItemProxy */;
+		};
 		6003F5B4195388D20070C39A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6003F589195388D20070C39A /* TYLive2D_Example */;
@@ -509,6 +598,58 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		195387AF1E818D1B003CE27A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 9KYD7S7AZY;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = TYLive2D_UITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tianyiyan.TYLive2D-UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TYLive2D_UITests/fastlane/TYLive2D_UITests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = TYLive2D_Example;
+			};
+			name = Debug;
+		};
+		195387B01E818D1B003CE27A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 9KYD7S7AZY;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = TYLive2D_UITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tianyiyan.TYLive2D-UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TYLive2D_UITests/fastlane/TYLive2D_UITests-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = TYLive2D_Example;
+			};
+			name = Release;
+		};
 		6003F5BD195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -657,6 +798,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		195387B11E818D1B003CE27A /* Build configuration list for PBXNativeTarget "TYLive2D_UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				195387AF1E818D1B003CE27A /* Debug */,
+				195387B01E818D1B003CE27A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		6003F585195388D10070C39A /* Build configuration list for PBXProject "TYLive2D" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
