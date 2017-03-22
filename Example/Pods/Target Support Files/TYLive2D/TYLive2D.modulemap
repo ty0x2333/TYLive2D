@@ -1,0 +1,6 @@
+framework module TYLive2D {
+  umbrella header "TYLive2D-umbrella.h"
+
+  export *
+  module * { export * }
+}
