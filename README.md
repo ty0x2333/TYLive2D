@@ -11,7 +11,7 @@ Inspiration from [DaidoujiChen/DaiLive2DPlayground](https://github.com/DaidoujiC
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-## Requirements
+![MainScreen](screenshots/iPhone6-MainScreen.png)
 
 ## Installation
 
@@ -19,7 +19,7 @@ TYLive2D is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod "TYLive2D"
+pod 'TYLive2D'
 ```
 
 ## Author
